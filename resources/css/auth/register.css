@@ -1,0 +1,62 @@
+
+/* Penyesuaian halaman register UANGKU */
+
+.auth-register-page {
+    padding: 24px;
+}
+
+.auth-register-page .auth-login-card {
+    min-height: auto;
+}
+
+.auth-register-page .auth-login-form-panel {
+    padding: 36px 42px;
+}
+
+.auth-register-page .auth-form-container {
+    max-width: 400px;
+}
+
+.auth-register-page .auth-form-heading {
+    margin-bottom: 24px;
+}
+
+.auth-register-page .auth-form-heading h2 {
+    font-size: 26px;
+}
+
+.auth-register-page .auth-input-group .form-select {
+    min-width: 0;
+    padding: 11px;
+    color: #25382d;
+    background-color: transparent;
+    font-size: 12px;
+}
+
+.auth-register-page .auth-register-file {
+    padding: 10px;
+    color: #52675a;
+    background: #ffffff;
+    border: 1px solid #dce9df;
+    border-radius: 11px;
+    font-size: 11px;
+}
+
+.auth-register-page .auth-register-file:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.09);
+}
+
+@media (max-width: 650px) {
+    .auth-register-page {
+        padding: 14px;
+    }
+
+    .auth-register-page .auth-login-form-panel {
+        padding: 28px 22px;
+    }
+
+    .auth-register-page .auth-form-heading h2 {
+        font-size: 24px;
+    }
+}

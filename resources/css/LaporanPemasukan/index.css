@@ -1,0 +1,75 @@
+/* Pembungkus halaman menjaga seluruh elemen laporan tetap sesuai lebar layar. */
+.laporan-pemasukan-page { min-width: 0; }
+
+/* Ikon filter dan ringkasan menggunakan aksen hijau yang konsisten. */
+.laporan-icon-filter,
+.laporan-summary-icon,
+.laporan-info-icon,
+.laporan-transaction-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    border-radius: 12px;
+}
+.laporan-icon-filter { width: 42px; height: 42px; background: #e8f5ee; color: #198754; }
+.laporan-summary-icon { width: 46px; height: 46px; font-size: 1.1rem; }
+.laporan-info-icon { width: 40px; height: 40px; background: #e8f5ee; color: #198754; }
+.laporan-transaction-icon { width: 34px; height: 34px; background: #e8f5ee; color: #198754; }
+
+/* Beri kartu ringkasan aksen tipis tanpa membuat bayangan berlebihan. */
+.laporan-summary-card { transition: transform .18s ease, box-shadow .18s ease; }
+.laporan-summary-card:hover { transform: translateY(-2px); }
+
+/* Grafik memakai batang CSS sehingga tidak membutuhkan package grafik tambahan. */
+.laporan-chart-scroll { width: 100%; overflow-x: auto; padding-bottom: 8px; }
+.laporan-chart-grid {
+    display: grid;
+    grid-template-columns: repeat(var(--jumlah-kolom, 5), minmax(54px, 1fr));
+    gap: 12px;
+    align-items: end;
+    min-width: max-content;
+    min-height: 245px;
+    padding: 8px 2px 0;
+}
+.laporan-chart-column { display: flex; flex-direction: column; align-items: center; justify-content: flex-end; min-width: 54px; height: 235px; }
+.laporan-chart-track {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: 100%;
+    height: 170px;
+    overflow: hidden;
+    border-radius: 8px 8px 3px 3px;
+    background: repeating-linear-gradient(to top, #f8f9fa 0, #f8f9fa 1px, transparent 1px, transparent 42px);
+}
+.laporan-chart-bar {
+    width: min(34px, 72%);
+    min-height: 0;
+    background: linear-gradient(180deg, #198754 0%, #46a879 100%);
+    border-radius: 7px 7px 2px 2px;
+    transition: height .25s ease;
+}
+.laporan-chart-legend { display: inline-block; width: 10px; height: 10px; border-radius: 3px; background: #198754; }
+.laporan-empty-chart { border: 1px dashed #ced4da; border-radius: 12px; background: #fbfcfb; }
+
+/* Informasi laporan ditampilkan sebagai baris yang mudah discan. */
+.laporan-info-item { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.laporan-info-item > div:last-child { min-width: 0; }
+.laporan-info-item .fw-semibold { overflow-wrap: anywhere; }
+
+/* Pencarian tidak melebar secara berlebihan pada desktop. */
+.laporan-search { width: 100%; max-width: 390px; }
+.laporan-search .input-group-text { border-right: 0; }
+.laporan-table thead th { padding-top: 15px; padding-bottom: 15px; background: #f8f9fa; color: #495057; font-size: .78rem; text-transform: uppercase; letter-spacing: .025em; white-space: nowrap; }
+.laporan-table tbody td { padding-top: 14px; padding-bottom: 14px; }
+.laporan-description { min-width: 160px; max-width: 260px; }
+.laporan-table tbody tr:hover { background: #fbfdfb; }
+
+/* Pada layar kecil, jaga pencarian penuh dan beri ruang untuk tabel yang dapat digeser. */
+@media (max-width: 575.98px) {
+    .laporan-search { max-width: 100%; }
+    .laporan-chart-grid { gap: 8px; }
+    .laporan-chart-column { min-width: 52px; }
+    .laporan-summary-card .card-body { padding: 1.1rem !important; }
+}

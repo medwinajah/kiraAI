@@ -1,0 +1,167 @@
+
+/* Header halaman pengeluaran */
+section:has(.title_pengeluaran) {
+    background: linear-gradient(115deg, #ffffff, #eaf7ef);
+    border-color: #dfede4 !important;
+    border-radius: 24px !important;
+    padding-top: 20px !important;
+    padding-bottom: 20px !important;
+    box-shadow: 0 8px 25px rgba(25, 135, 84, 0.06) !important;
+}
+
+/* Judul pengeluaran */
+.title_pengeluaran {
+    color: #198754;
+}
+
+section:has(.title_pengeluaran) h3 {
+    color: #25382d;
+    font-size: clamp(24px, 3vw, 32px);
+    letter-spacing: -0.7px;
+}
+
+section:has(.title_pengeluaran) p {
+    color: #718078;
+    margin-top: 9px;
+    margin-bottom: 0;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* Tombol tambah pengeluaran */
+.btn_tambah {
+    background: linear-gradient(135deg, #198754, #116342);
+    border-color: #198754 !important;
+    border-radius: 14px !important;
+    padding: 13px 20px !important;
+    font-size: 13px;
+    transition: all 0.2s ease;
+}
+
+.btn_tambah:hover {
+    background: #116342;
+    border-color: #116342 !important;
+    box-shadow: 0 8px 18px rgba(25, 135, 84, 0.18) !important;
+    transform: translateY(-2px);
+}
+
+.btn_tambah a {
+    color: #ffffff;
+}
+
+/* Responsif untuk HP */
+@media (max-width: 575.98px) {
+    section:has(.title_pengeluaran) {
+        padding: 18px !important;
+        gap: 12px;
+    }
+
+    section:has(.title_pengeluaran) h3 {
+        font-size: 25px;
+    }
+
+    .btn_tambah {
+        padding: 11px 15px !important;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn_tambah {
+        transition: none;
+    }
+}
+
+
+
+/* Filter pengeluaran */
+.row.p-lg-4.p-2.py-4.mt-2.border.rounded-4.shadow-sm.g-2 {
+    background: linear-gradient(135deg, #ffffff, #f2faf4);
+    border-color: #dcebe0 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.06) !important;
+}
+
+/* Judul dan deskripsi filter */
+.row.p-lg-4.p-2.py-4 h3 {
+    color: #25382d;
+}
+
+.row.p-lg-4.p-2.py-4 p {
+    color: #718078;
+}
+
+/* Label filter */
+lable,
+label {
+    color: #42634d;
+}
+
+/* Input tanggal dan pencarian */
+.input-group.border.rounded-3 {
+    overflow: hidden;
+    background: #fff;
+    border-color: #dcebe0 !important;
+    border-radius: 11px !important;
+}
+
+.input-group-text {
+    color: #198754;
+    background: #edf7f0;
+}
+
+.input-group:focus-within {
+    border-color: #198754 !important;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.10);
+}
+
+.input-group .form-control:focus {
+    box-shadow: none;
+}
+
+/* Tombol reset */
+.btn-outline-danger {
+    color: #198754;
+    background: #fff;
+    border-color: #cfe4d5;
+}
+
+.btn-outline-danger:hover {
+    color: #fff;
+    background: #198754;
+    border-color: #198754;
+}
+
+/* Header tabel */
+.bg-head-table {
+    background-color: #176b49 !important;
+    color: #fff !important;
+}
+
+/* Hover baris tabel */
+.table-hover tbody tr:hover > * {
+    background-color: #f1f9f3;
+}
+
+/* Tombol edit */
+.btn-info {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.btn-info:hover {
+    color: #fff;
+    background-color: #116342;
+    border-color: #116342;
+}
+
+/* Kartu tabel dan pagination */
+.card {
+    border-color: #e2eee6;
+}
+
+.card-footer {
+    background-color: #fbfefb;
+    border-top-color: #e2eee6;
+}

@@ -1,0 +1,770 @@
+
+/* =========================================
+   HALAMAN PEMASUKAN
+   Laravel + Bootstrap 5.3.8
+========================================= */
+
+.income-page {
+    --income-primary: #198754;
+    --income-primary-dark: #116342;
+    --income-text: #20352c;
+    --income-muted: #718078;
+    --income-border: #e2eee6;
+    --income-surface: #ffffff;
+
+    width: 100%;
+    min-width: 0;
+    color: var(--income-text);
+}
+
+/* =========================================
+   NOTIFIKASI
+========================================= */
+
+.income-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding: 16px 20px;
+    border: 1px solid transparent;
+    border-radius: 16px;
+    box-shadow: 0 5px 16px rgba(25, 60, 42, 0.04);
+}
+
+.income-alert__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    font-size: 17px;
+}
+
+.income-alert__content {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding-top: 1px;
+    overflow-wrap: anywhere;
+}
+
+.income-alert__content strong {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.income-alert__content span {
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.income-alert--success {
+    color: #166344;
+    background: #f0faf4;
+    border-color: #d3eddd;
+}
+
+.income-alert--success .income-alert__icon {
+    background: #d9f3e2;
+    color: #198754;
+}
+
+.income-alert--error {
+    color: #a52834;
+    background: #fff5f5;
+    border-color: #f5d4d7;
+}
+
+.income-alert--error .income-alert__icon {
+    background: #ffe1e3;
+    color: #dc3545;
+}
+
+/* =========================================
+   HERO SECTION
+========================================= */
+
+.income-hero {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(270px, 0.8fr);
+    align-items: center;
+    gap: 28px;
+    min-height: 305px;
+    padding: clamp(24px, 3.5vw, 42px);
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            115deg,
+            #ffffff 0%,
+            #f5fbf7 53%,
+            #eaf7ef 100%
+        );
+
+    border: 1px solid #dfede4;
+    border-radius: 26px;
+    box-shadow: 0 12px 35px rgba(26, 73, 48, 0.06);
+}
+
+.income-hero::before {
+    position: absolute;
+    z-index: -1;
+    top: -110px;
+    right: -65px;
+    width: 290px;
+    height: 290px;
+    content: "";
+    background: rgba(25, 135, 84, 0.045);
+    border-radius: 50%;
+}
+
+.income-hero::after {
+    position: absolute;
+    z-index: -1;
+    right: 24%;
+    bottom: -150px;
+    width: 230px;
+    height: 230px;
+    content: "";
+    background: rgba(25, 135, 84, 0.035);
+    border-radius: 50%;
+}
+
+.income-hero__content {
+    position: relative;
+    z-index: 2;
+    min-width: 0;
+}
+
+.income-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 17px;
+
+    color: #38835e;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+}
+
+.income-eyebrow__dot {
+    width: 8px;
+    height: 8px;
+    background: #198754;
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.10);
+}
+
+.income-hero__title {
+    margin: 0;
+    color: #20352c;
+    font-size: clamp(28px, 3vw, 39px);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: -1.3px;
+}
+
+.income-hero__title span {
+    color: #198754;
+}
+
+.income-hero__description {
+    max-width: 480px;
+    margin: 14px 0 18px;
+    color: #738078;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.income-benefits {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    margin-bottom: 24px;
+}
+
+.income-benefits span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: #53675b;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.income-benefits i {
+    color: #198754;
+    font-size: 13px;
+}
+
+.income-hero__footer {
+    display: flex;
+    align-items: center;
+}
+
+
+/* =========================================
+   TOMBOL TAMBAH PEMASUKAN
+========================================= */
+
+.income-add-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 67px;
+    padding: 10px 17px;
+
+    color: #ffffff;
+    text-decoration: none;
+
+    background: linear-gradient(
+        135deg,
+        #198754 0%,
+        #116b49 100%
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 8px 18px rgba(25, 135, 84, 0.19);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.income-add-button:hover {
+    color: #ffffff;
+    background: linear-gradient(
+        135deg,
+        #157347 0%,
+        #0e583c 100%
+    );
+    box-shadow: 0 12px 23px rgba(25, 135, 84, 0.25);
+    transform: translateY(-2px);
+}
+
+.income-add-button:focus-visible {
+    outline: 3px solid rgba(25, 135, 84, 0.30);
+    outline-offset: 4px;
+}
+
+.income-add-button__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 41px;
+    height: 41px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 12px;
+    font-size: 17px;
+}
+
+.income-add-button__text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.income-add-button__text strong {
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.income-add-button__text small {
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 10px;
+}
+
+.income-add-button__arrow {
+    margin-left: 8px;
+    font-size: 12px;
+    transition: transform 0.2s ease;
+}
+
+.income-add-button:hover .income-add-button__arrow {
+    transform: translateX(3px);
+}
+
+/* =========================================
+   ILUSTRASI HERO
+========================================= */
+
+.income-hero__art {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 0;
+    min-height: 220px;
+}
+
+.income-art-orbit {
+    position: absolute;
+    width: 240px;
+    height: 240px;
+    border: 1px solid rgba(25, 135, 84, 0.11);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 22px rgba(25, 135, 84, 0.025),
+        0 0 0 44px rgba(25, 135, 84, 0.02);
+}
+
+.income-art-card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    width: 100%;
+    max-width: 340px;
+    padding: 23px 17px;
+
+    background: rgba(255, 255, 255, 0.93);
+    border: 1px solid rgba(218, 235, 224, 0.95);
+    border-radius: 22px;
+    box-shadow: 0 18px 45px rgba(35, 83, 55, 0.10);
+
+    transform: rotate(-2deg);
+}
+
+.income-art-card__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 53px;
+    height: 53px;
+    color: #198754;
+    background: #e7f6ec;
+    border-radius: 16px;
+    font-size: 23px;
+}
+
+.income-art-card__text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 5px;
+    min-width: 0;
+}
+
+.income-art-card__text span {
+    color: #8b9a90;
+    font-size: 8px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.income-art-card__text strong {
+    color: #253d30;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.income-art-card__text small {
+    color: #849187;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.income-art-card__chart {
+    position: absolute;
+    top: -15px;
+    right: -12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37px;
+    height: 37px;
+
+    color: #ffffff;
+    background: #198754;
+    border: 4px solid #f3faf5;
+    border-radius: 13px;
+    font-size: 13px;
+    transform: rotate(8deg);
+}
+
+.income-art-chip {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 14px;
+
+    color: #377653;
+    background: #ffffff;
+    border: 1px solid #e2eee5;
+    border-radius: 13px;
+    box-shadow: 0 8px 20px rgba(35, 83, 55, 0.08);
+
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.income-art-chip i {
+    color: #198754;
+}
+
+/* =========================================
+   JUDUL DAFTAR PEMASUKAN
+========================================= */
+
+.income-list-section {
+    min-width: 0;
+    padding: 25px;
+    background: var(--income-surface);
+    border: 1px solid #e8eee9;
+    border-radius: 23px;
+    box-shadow: 0 8px 28px rgba(30, 57, 40, 0.035);
+}
+
+.income-list-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #edf1ed;
+}
+
+.income-list-heading__main {
+    min-width: 0;
+}
+
+.income-section-label {
+    display: inline-block;
+    margin-bottom: 8px;
+    color: #198754;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+}
+
+.income-list-heading h2 {
+    margin: 0;
+    color: #25382d;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.income-list-heading p {
+    margin: 7px 0 0;
+    color: #89958c;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.income-list-heading__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    flex-shrink: 0;
+    padding: 11px 14px;
+
+    color: #427457;
+    background: #f2f8f3;
+    border: 1px solid #e3efe5;
+    border-radius: 12px;
+
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.income-list-heading__badge i {
+    font-size: 14px;
+}
+
+/* Jangan mengunci lebar komponen Livewire */
+.income-list-content {
+    min-width: 0;
+    padding-top: 20px;
+}
+
+/* =========================================
+   RESPONSIVE TABLET
+========================================= */
+
+@media (max-width: 991.98px) {
+    .income-hero {
+        grid-template-columns: minmax(0, 1fr) minmax(220px, 0.75fr);
+        gap: 15px;
+    }
+
+    .income-hero__title {
+        font-size: 31px;
+    }
+
+    .income-hero__art {
+        min-height: 180px;
+    }
+
+    .income-art-card {
+        gap: 9px;
+        padding: 19px 12px;
+    }
+
+    .income-art-card__icon {
+        width: 43px;
+        height: 43px;
+        font-size: 19px;
+    }
+
+    .income-art-card__text strong {
+        font-size: 12px;
+    }
+
+    .income-art-chip {
+        right: -3px;
+        font-size: 9px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE MOBILE
+========================================= */
+
+@media (max-width: 767.98px) {
+    .income-hero {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 0;
+        padding: 27px 23px;
+        border-radius: 21px;
+    }
+
+    .income-hero__title {
+        font-size: clamp(27px, 6vw, 34px);
+        letter-spacing: -0.8px;
+    }
+
+    .income-hero__description {
+        margin-top: 12px;
+        font-size: 13px;
+    }
+
+    .income-benefits {
+        gap: 9px 15px;
+    }
+
+    .income-hero__art {
+        min-height: 145px;
+        margin-top: 25px;
+    }
+
+    .income-art-card {
+        max-width: 310px;
+    }
+
+    .income-art-orbit {
+        width: 180px;
+        height: 180px;
+    }
+
+    .income-art-chip {
+        right: max(0px, calc((100% - 310px) / 2 - 7px));
+        bottom: -4px;
+    }
+
+    .income-list-section {
+        padding: 20px 16px;
+        border-radius: 19px;
+    }
+
+    .income-list-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 13px;
+        padding-bottom: 18px;
+    }
+
+    .income-list-heading h2 {
+        font-size: 19px;
+    }
+
+    .income-list-content {
+        padding-top: 16px;
+    }
+}
+
+/* =========================================
+   RESPONSIVE MOBILE KECIL
+========================================= */
+
+@media (max-width: 399.98px) {
+    .income-hero {
+        padding: 23px 17px;
+    }
+
+    .income-hero__title {
+        font-size: 27px;
+    }
+
+    .income-add-button {
+        gap: 9px;
+        padding: 9px 12px;
+    }
+
+    .income-add-button__text strong {
+        font-size: 12px;
+    }
+
+    .income-art-card {
+        gap: 9px;
+        padding: 17px 12px;
+    }
+
+    .income-art-card__text small {
+        font-size: 9px;
+    }
+
+    .income-list-section {
+        padding: 17px 12px;
+    }
+}
+
+/* Hormati preferensi pengguna yang mengurangi animasi */
+@media (prefers-reduced-motion: reduce) {
+    .income-add-button,
+    .income-add-button__arrow {
+        transition: none;
+    }
+}
+
+
+/* Sentuhan hijau pada filter dan tabel pemasukan */
+
+/* Panel filter */
+.income-page .row.border.rounded-4 {
+    background-color: #fbfefb;
+    border-color: #e2eee6 !important;
+}
+
+/* Judul filter */
+.income-page h3 {
+    color: #25382d;
+}
+
+/* Header tabel hijau gelap */
+.income-page .bg-head-table {
+    background-color: #176b49 !important;
+    color: #fff !important;
+}
+
+/* Warna nominal pemasukan */
+.income-page .badge.bg-success {
+    background-color: #198754 !important;
+}
+
+/* Label sumber pemasukan */
+.income-page td p.border {
+    border-color: #dcebe0 !important;
+    color: #52705c;
+    background-color: #f5faf6;
+}
+
+/* Efek hover tabel */
+.income-page .table-hover tbody tr:hover > * {
+    background-color: #f1f9f3;
+}
+
+/* Tombol edit hijau */
+.income-page .btn-info {
+    color: #fff;
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.income-page .btn-info:hover {
+    background-color: #146c43;
+    border-color: #146c43;
+}
+
+/* Bagian pagination */
+.income-page .card-footer {
+    background-color: #fbfefb;
+    border-top: 1px solid #e2eee6;
+}
+
+
+/* Filter pemasukan - tema hijau */
+.income-page .row.p-lg-4.p-2.py-4.mt-2.border.rounded-4.shadow-sm.g-2 {
+    background: linear-gradient(135deg, #ffffff, #f2faf4);
+    border: 1px solid #dcebe0 !important;
+    border-radius: 20px !important;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.06) !important;
+}
+
+/* Judul filter */
+.income-page h3 {
+    color: #25382d;
+}
+
+.income-page p.small.fw-light {
+    color: #718078;
+}
+
+/* Label tanggal dan pencarian */
+.income-page lable,
+.income-page label {
+    color: #42634d;
+    font-size: 12px;
+}
+
+/* Input tanggal dan pencarian */
+.income-page .input-group.border.rounded-3 {
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #dcebe0 !important;
+    border-radius: 11px !important;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+/* Ikon pada input */
+.income-page .input-group-text {
+    color: #198754;
+    background: #edf7f0;
+}
+
+/* Efek saat input dipilih */
+.income-page .input-group:focus-within {
+    border-color: #198754 !important;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.10);
+}
+
+.income-page .input-group .form-control {
+    font-size: 12px;
+}
+
+.income-page .input-group .form-control:focus {
+    border-color: transparent;
+    box-shadow: none;
+}
+
+/* Tombol reset */
+.income-page .btn-outline-danger {
+    color: #198754;
+    background: #ffffff;
+    border-color: #cfe4d5;
+    border-radius: 10px;
+}
+
+.income-page .btn-outline-danger:hover {
+    color: #ffffff;
+    background: #198754;
+    border-color: #198754;
+}
+
+

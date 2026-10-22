@@ -1,0 +1,136 @@
+.title_pemasukan{
+    color:rgba(2, 97, 148, 0.973) !important;
+}
+.btn_tambah{
+    background-color:rgba(1, 110, 168, 0.973) !important;
+    transition:  all 0.3s ease;
+}
+.btn_tambah:hover{
+    background-color:rgba(2, 97, 148, 0.973) !important;
+}
+.w-fit {
+    width: fit-content !important;
+}
+
+.bg-custom-1{
+    background: linear-gradient(95deg, rgb(0, 132, 155), rgb(0, 57, 104));
+    transition: all 0.3s ease;
+}
+.bg-custom-1:hover{
+    background: linear-gradient(95deg, rgb(3, 113, 132), rgb(5, 71, 125));
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px 2px linear-gradient(95deg, rgb(3, 113, 132), rgb(5, 71, 125)) ;
+   
+}
+
+.bg-custom-2{
+    background: linear-gradient(95deg, rgb(57, 97, 2), rgb(10, 133, 152));
+    transition: all 0.3s ease;
+}
+.bg-custom-2:hover{
+   background: linear-gradient(95deg, rgb(80, 126, 15), rgb(5, 99, 114));
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px 2px linear-gradient(95deg, rgb(3, 113, 132), rgb(5, 71, 125)) ;
+}
+
+.bg-custom-3{
+    background: linear-gradient(95deg, rgb(0, 155, 121), rgb(0, 88, 104));
+    transition: all 0.3s ease;
+}
+.bg-custom-3:hover{
+   background: linear-gradient(95deg, rgb(14, 145, 116), rgb(5, 114, 134));
+    transform: translateY(-2px);
+    box-shadow: 4px 4px 10px 2px linear-gradient(95deg, rgb(3, 113, 132), rgb(5, 71, 125)) ;
+   
+}
+
+.text-info-card{
+    color:  rgb(255, 255, 255);
+    width: fit-content;
+    background-color: rgb(0, 107, 149);;
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #198754, #116342);
+    color: #ffffff;
+}
+.dumy-gambar{
+    border:  2px dotted rgb(201, 241, 255) !important;
+    background-color: rgb(218, 236, 241);
+    transition: all 0.4s ease;
+}
+
+.dumy-gambar:hover{
+     background-color: rgb(198, 232, 241);
+     transform: translateY(-1px);
+}
+
+
+/* Header tabungan - tema hijau */
+section.d-flex.align-items-center.justify-content-between.flex-wrap.gap-3.py-3 {
+    background: linear-gradient(115deg, #ffffff, #eaf7ef) !important;
+    border: 1px solid #dfede4 !important;
+    box-shadow: 0 8px 25px rgba(25, 135, 84, 0.06) !important;
+}
+
+/* Judul target tabungan */
+.text-primary {
+    color: #198754 !important;
+}
+
+/* Tombol tambah target */
+.btn_tambah {
+    color: #ffffff !important;
+    background: linear-gradient(135deg, #198754, #116342) !important;
+    border-color: #198754 !important;
+    transition: all 0.2s ease;
+}
+
+.btn_tambah:hover {
+    background: #116342 !important;
+    border-color: #116342 !important;
+    box-shadow: 0 8px 18px rgba(25, 135, 84, 0.18) !important;
+    transform: translateY(-2px);
+}
+
+/* Notifikasi berhasil */
+.bg-success {
+    background-color: #198754 !important;
+}
+
+/* Notifikasi error tetap lembut */
+.bg-warning-subtle {
+    border-color: #f0dfac !important;
+    border-radius: 12px !important;
+}
+
+/* Responsif */
+@media (max-width: 575.98px) {
+    .btn_tambah {
+        padding: 11px 15px !important;
+        font-size: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .btn_tambah {
+        transition: none;
+    }
+}
+
+/* Filter Pill */
+.filter-pill:hover{
+    background-color: rgb(34, 179, 109);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    border:1px solid green !important;
+    font-weight: 700 !important;
+}
+
+.active-filter-pill{
+    background-color: rgb(34, 179, 109);
+    border:1px solid green !important;
+    font-weight: 700 !important;
+}
+
+

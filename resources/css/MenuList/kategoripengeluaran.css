@@ -1,0 +1,204 @@
+
+/* Header kategori pemasukan */
+.kategori-income-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    padding: 28px;
+    background: linear-gradient(115deg, #ffffff, #eaf7ef);
+    border: 1px solid #dfede4;
+    border-radius: 22px;
+    box-shadow: 0 8px 25px rgba(25, 135, 84, 0.06);
+}
+
+.kategori-income-eyebrow {
+    display: block;
+    margin-bottom: 12px;
+    color: #198754;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+}
+
+.kategori-income-header h3 {
+    color: #25382d;
+    font-size: clamp(24px, 3vw, 32px);
+}
+
+.kategori-income-header h3 span {
+    color: #198754;
+}
+
+.kategori-income-header p {
+    max-width: 550px;
+    color: #718078;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* Tombol tambah */
+.kategori-income-add {
+    padding: 13px 18px;
+    color: #fff;
+    background: linear-gradient(135deg, #198754, #116342);
+    border: 1px solid #198754;
+    border-radius: 13px;
+    font-size: 12px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.kategori-income-add:hover {
+    background-color: #10b171 !important;
+    transform: translateY(-2px);
+}
+
+/* Kartu daftar */
+.kategori-income-card {
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid #e2eee6;
+    border-radius: 20px;
+    box-shadow: 0 6px 20px rgba(25, 135, 84, 0.045);
+}
+
+.kategori-income-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 23px;
+    border-bottom: 1px solid #e8f0ea;
+}
+
+.kategori-income-card-header h5 {
+    color: #25382d;
+    font-size: 16px;
+}
+
+.kategori-income-card-header p {
+    color: #839087;
+    font-size: 12px;
+}
+
+.kategori-income-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 43px;
+    height: 43px;
+    color: #198754;
+    background: #edf8f0;
+    border: 1px solid #dcebe0;
+    border-radius: 13px;
+}
+
+/* Tabel */
+.kategori-income-card .table thead th {
+    padding: 15px 18px;
+    color: #fff;
+    background: #176b49;
+    border: 0;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.kategori-income-card .table tbody td {
+    padding: 17px 18px;
+    color: #536358;
+    border-color: #edf2ee;
+    font-size: 12px;
+}
+
+.kategori-income-card .table-hover tbody tr:hover > * {
+    background: #f1f9f3;
+}
+
+.kategori-income-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #304b38;
+    font-weight: 700;
+}
+
+.kategori-income-name span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    color: #198754;
+    background: #edf8f0;
+    border-radius: 10px;
+}
+
+.kategori-income-description {
+    max-width: 400px;
+    overflow-wrap: anywhere;
+}
+
+/* Input modal */
+.kategori-income-input,
+.kategori-income-textarea {
+    border-color: #dcebe0;
+    border-radius: 10px;
+}
+
+.kategori-income-input {
+    overflow: hidden;
+    border: 1px solid #dcebe0;
+}
+
+.kategori-income-input .input-group-text {
+    color: #198754;
+    background: #edf7f0;
+    border: 0;
+}
+
+.kategori-income-input .form-control {
+    padding: 11px;
+    border: 0;
+    box-shadow: none;
+    font-size: 12px;
+}
+
+.kategori-income-input:focus-within {
+    border-color: #198754;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.1);
+}
+
+.kategori-income-textarea {
+    font-size: 12px;
+}
+
+.kategori-income-textarea:focus {
+    border-color: #198754;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.1);
+}
+
+/* Responsif */
+@media (max-width: 575.98px) {
+    .kategori-income-header {
+        padding: 21px;
+    }
+
+    .kategori-income-add {
+        width: 100%;
+    }
+
+    .kategori-income-card-header {
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .kategori-income-add {
+        transition: none;
+    }
+}

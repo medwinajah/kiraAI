@@ -1,0 +1,41 @@
+
+/* Header Dashboard UANGKU */
+.bg-dashboards {
+    background: linear-gradient(135deg, #198754, #116342) !important;
+    border: 1px solid #277c53 !important;
+    border-radius: 20px !important;
+    padding: 28px !important;
+    box-shadow: 0 8px 24px rgba(25, 135, 84, 0.12) !important;
+}
+
+/* Judul sapaan */
+.bg-dashboards h3 {
+    color: #ffffff;
+    font-size: clamp(22px, 3vw, 30px);
+    letter-spacing: -0.5px;
+    line-height: 1.5;
+}
+
+/* Aksen sapaan */
+.bg-dashboards .sapaan {
+    color: #a9e6be;
+}
+
+/* Deskripsi dashboard */
+.bg-dashboards p {
+    color: #e0f2e6 !important;
+    font-size: 13px;
+    line-height: 1.8;
+    margin-bottom: 0;
+}
+
+/* Tampilan HP */
+@media (max-width: 575.98px) {
+    .bg-dashboards {
+        padding: 22px !important;
+    }
+
+    .bg-dashboards h3 {
+        font-size: 22px;
+    }
+}

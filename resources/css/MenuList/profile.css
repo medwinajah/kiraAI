@@ -1,0 +1,1061 @@
+/* =========================================================
+   KIRAAI — PREMIUM PROFILE SETTINGS
+   Laravel + Bootstrap 5.3.8
+   ========================================================= */
+
+.profile-page {
+    --profile-green: #176b49;
+    --profile-green-dark: #105638;
+    --profile-green-light: #e8f5ed;
+    --profile-green-soft: #f4faf6;
+    --profile-green-border: #d7eadf;
+
+    --profile-text: #24352b;
+    --profile-secondary: #64746a;
+    --profile-muted: #87938b;
+
+    --profile-border: #e6ede8;
+    --profile-white: #ffffff;
+
+    --profile-red: #c93645;
+    --profile-red-light: #fff0f1;
+
+    width: 100%;
+    min-width: 0;
+    color: var(--profile-text);
+}
+
+.profile-page *,
+.profile-page *::before,
+.profile-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   01. HEADER
+   ========================================================= */
+
+.profile-page .profile-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    min-height: 190px;
+    padding: 2rem 2.2rem;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 88% 12%,
+            rgba(174, 226, 190, 0.2) 0,
+            transparent 25%
+        ),
+        linear-gradient(
+            115deg,
+            #105638 0%,
+            #176b49 54%,
+            #27835b 100%
+        );
+
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 22px;
+
+    box-shadow: 0 12px 30px rgba(16, 86, 56, 0.13);
+}
+
+.profile-page .profile-header-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+}
+
+.profile-page .profile-eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    margin-bottom: 0.85rem;
+    padding: 0.45rem 0.75rem;
+
+    color: #e5f6e9;
+    background: rgba(255, 255, 255, 0.105);
+
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+
+    font-size: 0.67rem;
+    font-weight: 750;
+    letter-spacing: 0.1em;
+}
+
+.profile-page .profile-page-title {
+    margin: 0 0 0.65rem;
+
+    color: #ffffff;
+    font-size: clamp(1.65rem, 3vw, 2.1rem);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -0.045em;
+}
+
+.profile-page .profile-page-title span {
+    color: #bce8c9;
+}
+
+.profile-page .profile-header-description {
+    max-width: 530px;
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.87rem;
+    line-height: 1.75;
+}
+
+.profile-page .profile-header-meta {
+    margin-top: 1.1rem;
+
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+.profile-page .profile-header-illustration {
+    position: relative;
+
+    display: flex;
+    flex: 0 0 155px;
+    align-items: center;
+    justify-content: center;
+
+    width: 155px;
+    height: 145px;
+}
+
+.profile-page .profile-header-decoration {
+    position: absolute;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 50%;
+}
+
+.profile-page .profile-header-decoration-one {
+    width: 130px;
+    height: 130px;
+}
+
+.profile-page .profile-header-decoration-two {
+    width: 98px;
+    height: 98px;
+    border-style: dashed;
+}
+
+.profile-page .profile-header-icon {
+    position: relative;
+    z-index: 1;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 76px;
+    height: 76px;
+
+    color: #e6f8eb;
+    background: rgba(255, 255, 255, 0.12);
+
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-radius: 24px;
+
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+
+    font-size: 2rem;
+    backdrop-filter: blur(5px);
+}
+
+.profile-page .profile-header-floating-icon {
+    position: absolute;
+    top: 17px;
+    right: 4px;
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 31px;
+    height: 31px;
+
+    color: var(--profile-green);
+    background: #e7f7e9;
+
+    border: 3px solid #2a7a56;
+    border-radius: 50%;
+
+    font-size: 0.7rem;
+}
+
+
+/* =========================================================
+   02. ALERT / NOTIFIKASI
+   ========================================================= */
+
+.profile-page .profile-alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.3rem;
+
+    padding: 1rem 1.1rem;
+
+    border-radius: 13px;
+
+    font-size: 0.83rem;
+    line-height: 1.65;
+}
+
+.profile-page .profile-alert-success {
+    color: #176b49;
+    background: #eff9f1;
+    border: 1px solid #d8eddf;
+}
+
+.profile-page .profile-alert-danger {
+    color: #a52d3b;
+    background: #fff4f4;
+    border: 1px solid #f3d9dc;
+}
+
+
+/* =========================================================
+   03. KARTU IDENTITAS
+   ========================================================= */
+
+.profile-page .profile-card,
+.profile-page .profile-form-card {
+    min-width: 0;
+
+    background: var(--profile-white);
+    border: 1px solid var(--profile-border);
+    border-radius: 21px;
+
+    box-shadow: 0 6px 24px rgba(29, 61, 42, 0.045);
+}
+
+.profile-page .profile-card {
+    position: relative;
+    padding: 1.6rem;
+    overflow: hidden;
+}
+
+.profile-page .profile-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+
+    margin: -1.6rem -1.6rem 1.7rem;
+    padding: 1.05rem 1.4rem;
+
+    background: linear-gradient(110deg, #f5faf6, #fbfdfb);
+    border-bottom: 1px solid #eaf1eb;
+}
+
+.profile-page .profile-card-top-label {
+    color: var(--profile-green);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.profile-page .profile-card-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.42rem;
+
+    padding: 0.35rem 0.6rem;
+
+    color: #187348;
+    background: #e8f6ed;
+    border: 1px solid #d5ebdc;
+    border-radius: 999px;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+}
+
+.profile-page .profile-status-dot {
+    width: 6px;
+    height: 6px;
+
+    background: #22965a;
+    border-radius: 50%;
+
+    box-shadow: 0 0 0 3px rgba(34, 150, 90, 0.1);
+}
+
+
+/* =========================================================
+   04. AVATAR / FOTO PROFIL
+   ========================================================= */
+
+.profile-page .profile-avatar-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 116px;
+    height: 116px;
+
+    margin: 0 auto 1.2rem;
+}
+
+.profile-page .profile-avatar {
+    display: block;
+
+    width: 108px;
+    height: 108px;
+
+    object-fit: cover;
+
+    border: 4px solid #ffffff;
+    border-radius: 30px;
+
+    box-shadow:
+        0 0 0 1px #dcebe0,
+        0 9px 22px rgba(23, 107, 73, 0.12);
+}
+
+.profile-page .profile-avatar-initial {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+    background: linear-gradient(145deg, #176b49, #319568);
+
+    font-size: 2rem;
+    font-weight: 800;
+    letter-spacing: -0.05em;
+}
+
+.profile-page .profile-avatar-badge {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    color: #ffffff;
+    background: var(--profile-green);
+
+    border: 3px solid #ffffff;
+    border-radius: 11px;
+
+    font-size: 0.7rem;
+}
+
+
+/* =========================================================
+   05. IDENTITAS PENGGUNA
+   ========================================================= */
+
+.profile-page .profile-identity {
+    text-align: center;
+}
+
+.profile-page .profile-identity h5 {
+    margin: 0 0 0.45rem;
+
+    color: var(--profile-text);
+    font-size: 1.13rem;
+    font-weight: 800;
+    line-height: 1.45;
+    letter-spacing: -0.025em;
+
+    overflow-wrap: anywhere;
+}
+
+.profile-page .profile-identity p {
+    margin: 0 0 0.9rem;
+
+    color: var(--profile-muted);
+    font-size: 0.79rem;
+    overflow-wrap: anywhere;
+}
+
+.profile-page .profile-role {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.5rem 0.8rem;
+
+    color: var(--profile-green);
+    background: var(--profile-green-light);
+    border: 1px solid var(--profile-green-border);
+    border-radius: 9px;
+
+    font-size: 0.73rem;
+    font-weight: 750;
+    text-transform: capitalize;
+}
+
+.profile-page .profile-divider {
+    height: 1px;
+    margin: 1.5rem 0;
+
+    background: linear-gradient(
+        90deg,
+        transparent,
+        #e5ede7 18%,
+        #e5ede7 82%,
+        transparent
+    );
+}
+
+
+/* =========================================================
+   06. INFORMASI IDENTITAS
+   ========================================================= */
+
+.profile-page .profile-information {
+    display: flex;
+    flex-direction: column;
+    gap: 1.15rem;
+}
+
+.profile-page .profile-information-item {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+
+    min-width: 0;
+}
+
+.profile-page .profile-information-icon {
+    display: flex;
+    flex: 0 0 42px;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    height: 42px;
+
+    color: var(--profile-green);
+    background: #f0f8f2;
+    border: 1px solid #e2efe5;
+    border-radius: 13px;
+
+    font-size: 0.94rem;
+}
+
+.profile-page .profile-information-content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    min-width: 0;
+}
+
+.profile-page .profile-information-item small {
+    color: var(--profile-muted);
+    font-size: 0.7rem;
+    font-weight: 500;
+}
+
+.profile-page .profile-information-item strong {
+    color: #34463a;
+    font-size: 0.8rem;
+    font-weight: 700;
+    line-height: 1.5;
+
+    overflow-wrap: anywhere;
+}
+
+.profile-page .profile-email-value {
+    word-break: break-word;
+}
+
+
+/* =========================================================
+   07. CATATAN KEAMANAN
+   ========================================================= */
+
+.profile-page .profile-security-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.65rem;
+
+    margin-top: 1.6rem;
+    padding: 0.9rem;
+
+    background: #f7faf7;
+    border: 1px solid #ebf1ec;
+    border-radius: 12px;
+}
+
+.profile-page .profile-security-icon {
+    flex: 0 0 auto;
+    margin-top: 0.1rem;
+
+    color: var(--profile-green);
+    font-size: 0.85rem;
+}
+
+.profile-page .profile-security-note p {
+    margin: 0;
+
+    color: #718077;
+    font-size: 0.72rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   08. KARTU FORM
+   ========================================================= */
+
+.profile-page .profile-form-card {
+    padding: 1.8rem;
+}
+
+.profile-page .profile-form-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.profile-page .profile-form-eyebrow {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+
+    color: var(--profile-green);
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.105em;
+}
+
+.profile-page .profile-form-heading h5 {
+    margin: 0 0 0.45rem;
+
+    color: var(--profile-text);
+    font-size: 1.2rem;
+    font-weight: 800;
+    letter-spacing: -0.035em;
+}
+
+.profile-page .profile-form-heading p {
+    max-width: 450px;
+    margin: 0;
+
+    color: var(--profile-muted);
+    font-size: 0.8rem;
+    line-height: 1.7;
+}
+
+.profile-page .profile-form-icon {
+    display: flex;
+    flex: 0 0 48px;
+    align-items: center;
+    justify-content: center;
+
+    width: 48px;
+    height: 48px;
+
+    color: var(--profile-green);
+    background: linear-gradient(145deg, #e8f5ed, #f4faf6);
+    border: 1px solid #dcefe2;
+    border-radius: 15px;
+
+    font-size: 1.1rem;
+}
+
+.profile-page .profile-form-divider {
+    height: 1px;
+    margin: 1.45rem 0 1.6rem;
+
+    background: #ebf0ec;
+}
+
+
+/* =========================================================
+   09. LABEL DAN INPUT FORM
+   ========================================================= */
+
+.profile-page .profile-label {
+    display: block;
+    margin-bottom: 0.55rem;
+
+    color: #425348;
+    font-size: 0.79rem;
+    font-weight: 750;
+}
+
+.profile-page .profile-required {
+    color: var(--profile-red);
+}
+
+.profile-page .profile-input {
+    min-width: 0;
+}
+
+.profile-page .profile-input .input-group-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 47px;
+    padding: 0.7rem;
+
+    color: #668071;
+    background: #f7faf7;
+
+    border: 1px solid #dfe9e1;
+    border-right: 0;
+
+    border-radius: 11px 0 0 11px;
+    font-size: 0.9rem;
+}
+
+.profile-page .profile-input .form-control,
+.profile-page .profile-input .form-select {
+    min-width: 0;
+    min-height: 47px;
+    padding: 0.75rem 0.9rem;
+
+    color: var(--profile-text);
+    background-color: #ffffff;
+
+    border: 1px solid #dfe9e1;
+    border-radius: 0 11px 11px 0;
+
+    box-shadow: none;
+
+    font-size: 0.81rem;
+    line-height: 1.5;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.profile-page .profile-input .form-control::placeholder {
+    color: #a1aca4;
+    opacity: 1;
+}
+
+.profile-page .profile-input .form-control:focus,
+.profile-page .profile-input .form-select:focus {
+    position: relative;
+    z-index: 1;
+
+    background-color: #ffffff;
+    border-color: #7fbc92;
+
+    box-shadow: 0 0 0 3px rgba(23, 107, 73, 0.085);
+}
+
+.profile-page .profile-input .form-select {
+    cursor: pointer;
+}
+
+.profile-page .profile-readonly {
+    color: #738176 !important;
+    background: #f7f9f7 !important;
+    cursor: not-allowed;
+}
+
+.profile-page .profile-input .form-control.is-invalid,
+.profile-page .profile-input .form-select.is-invalid {
+    border-color: #dc3545;
+}
+
+.profile-page .profile-input-invalid .input-group-text {
+    color: var(--profile-red);
+    background: #fff5f5;
+    border-color: #dc3545;
+}
+
+.profile-page .profile-error-message {
+    display: block;
+    margin-top: 0.45rem;
+
+    color: #c93645;
+    font-size: 0.73rem;
+    line-height: 1.6;
+}
+
+.profile-page .profile-field-help {
+    display: block;
+    margin-top: 0.5rem;
+
+    color: var(--profile-muted);
+    font-size: 0.72rem;
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   10. UPLOAD FOTO PROFIL
+   ========================================================= */
+
+.profile-page .profile-upload-wrapper {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    padding: 1.1rem;
+
+    background: #fafcfa;
+    border: 1px dashed #cfdfd2;
+    border-radius: 14px;
+
+    transition:
+        background-color 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.profile-page .profile-upload-wrapper:focus-within {
+    background: #f4faf5;
+    border-color: #86bb96;
+}
+
+.profile-page .profile-upload-icon {
+    display: flex;
+    flex: 0 0 44px;
+    align-items: center;
+    justify-content: center;
+
+    width: 44px;
+    height: 44px;
+
+    color: var(--profile-green);
+    background: var(--profile-green-light);
+    border: 1px solid #dbeee0;
+    border-radius: 13px;
+
+    font-size: 1rem;
+}
+
+.profile-page .profile-upload-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.profile-page .profile-file {
+    width: 100%;
+    min-width: 0;
+    padding: 0.5rem;
+
+    color: #65756a;
+    background: #ffffff;
+
+    border: 1px solid #e0e8e1;
+    border-radius: 9px;
+
+    font-size: 0.74rem;
+}
+
+.profile-page .profile-file::file-selector-button {
+    margin: 0 0.7rem 0 0;
+    padding: 0.5rem 0.75rem;
+
+    color: var(--profile-green);
+    background: #edf7f0;
+
+    border: 0;
+    border-radius: 7px;
+
+    font-size: 0.73rem;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: background-color 0.2s ease;
+}
+
+.profile-page .profile-file::file-selector-button:hover {
+    background: #dcefe2;
+}
+
+.profile-page .profile-file.is-invalid {
+    border-color: #dc3545;
+}
+
+
+/* =========================================================
+   11. FOOTER DAN TOMBOL FORM
+   ========================================================= */
+
+.profile-page .profile-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+
+    margin-top: 1.8rem;
+    padding-top: 1.3rem;
+
+    border-top: 1px solid #eaf0eb;
+}
+
+.profile-page .profile-form-reminder {
+    flex: 1 1 220px;
+
+    margin: 0;
+
+    color: #829087;
+    font-size: 0.72rem;
+    line-height: 1.7;
+}
+
+.profile-page .profile-form-reminder i {
+    color: var(--profile-green);
+}
+
+.profile-page .profile-form-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.profile-page .profile-reset-button,
+.profile-page .profile-save-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 45px;
+    padding: 0.7rem 1.05rem;
+
+    border-radius: 11px;
+
+    font-size: 0.78rem;
+    font-weight: 750;
+    white-space: nowrap;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.profile-page .profile-reset-button {
+    color: #68766d;
+    background: #ffffff;
+    border: 1px solid #dfe7e0;
+}
+
+.profile-page .profile-reset-button:hover {
+    color: #37483d;
+    background: #f5f8f5;
+    border-color: #cad8cc;
+}
+
+.profile-page .profile-save-button {
+    color: #ffffff;
+    background: linear-gradient(135deg, #176b49, #218256);
+    border: 1px solid #176b49;
+
+    box-shadow: 0 5px 12px rgba(23, 107, 73, 0.12);
+}
+
+.profile-page .profile-save-button:hover {
+    color: #ffffff;
+    background: linear-gradient(135deg, #105638, #176b49);
+    border-color: #105638;
+
+    box-shadow: 0 8px 17px rgba(23, 107, 73, 0.18);
+    transform: translateY(-1px);
+}
+
+.profile-page .profile-reset-button:focus-visible,
+.profile-page .profile-save-button:focus-visible {
+    outline: 3px solid rgba(23, 107, 73, 0.2);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   12. RESPONSIVE TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .profile-page .profile-header {
+        min-height: 175px;
+        padding: 1.7rem 1.8rem;
+    }
+
+    .profile-page .profile-header-illustration {
+        flex-basis: 120px;
+        width: 120px;
+    }
+
+    .profile-page .profile-card {
+        padding: 1.4rem;
+    }
+
+    .profile-page .profile-card-top {
+        margin: -1.4rem -1.4rem 1.6rem;
+        padding: 1rem 1.2rem;
+    }
+
+    .profile-page .profile-form-card {
+        padding: 1.5rem;
+    }
+}
+
+
+/* =========================================================
+   13. RESPONSIVE MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .profile-page .profile-header {
+        align-items: flex-start;
+        min-height: auto;
+        padding: 1.4rem;
+        border-radius: 17px;
+    }
+
+    .profile-page .profile-eyebrow {
+        margin-bottom: 0.75rem;
+        font-size: 0.6rem;
+    }
+
+    .profile-page .profile-page-title {
+        font-size: 1.65rem;
+    }
+
+    .profile-page .profile-header-description {
+        font-size: 0.79rem;
+    }
+
+    .profile-page .profile-header-illustration {
+        display: none;
+    }
+
+    .profile-page .profile-header-meta {
+        font-size: 0.7rem;
+    }
+
+    .profile-page .profile-card,
+    .profile-page .profile-form-card {
+        border-radius: 17px;
+    }
+
+    .profile-page .profile-card {
+        padding: 1.15rem;
+    }
+
+    .profile-page .profile-card-top {
+        margin: -1.15rem -1.15rem 1.5rem;
+        padding: 0.95rem 1rem;
+    }
+
+    .profile-page .profile-avatar-wrapper {
+        width: 105px;
+        height: 105px;
+    }
+
+    .profile-page .profile-avatar {
+        width: 98px;
+        height: 98px;
+        border-radius: 26px;
+    }
+
+    .profile-page .profile-information {
+        gap: 1rem;
+    }
+
+    .profile-page .profile-information-icon {
+        flex-basis: 39px;
+        width: 39px;
+        height: 39px;
+        border-radius: 12px;
+    }
+
+    .profile-page .profile-form-card {
+        padding: 1.15rem;
+    }
+
+    .profile-page .profile-form-heading h5 {
+        font-size: 1.05rem;
+    }
+
+    .profile-page .profile-form-heading p {
+        font-size: 0.76rem;
+    }
+
+    .profile-page .profile-form-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+        border-radius: 12px;
+        font-size: 0.95rem;
+    }
+
+    .profile-page .profile-upload-wrapper {
+        gap: 0.75rem;
+        padding: 0.8rem;
+    }
+
+    .profile-page .profile-upload-icon {
+        flex-basis: 36px;
+        width: 36px;
+        height: 36px;
+        font-size: 0.85rem;
+    }
+
+    .profile-page .profile-form-footer {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .profile-page .profile-form-reminder {
+        flex-basis: auto;
+    }
+
+    .profile-page .profile-form-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        width: 100%;
+    }
+
+    .profile-page .profile-reset-button,
+    .profile-page .profile-save-button {
+        width: 100%;
+        min-height: 46px;
+    }
+}
+
+
+/* =========================================================
+   14. REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .profile-page *,
+    .profile-page *::before,
+    .profile-page *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+}

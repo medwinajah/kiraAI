@@ -1,0 +1,1267 @@
+/* =========================================================
+   KIRAAI — PREMIUM FINANCIAL DASHBOARD
+   Laravel + Livewire + Bootstrap 5.3.8
+   ========================================================= */
+
+.dashboard-page,
+.dashboard-analytics {
+    --ka-green: #176b49;
+    --ka-green-dark: #105638;
+    --ka-green-light: #e8f5ed;
+    --ka-green-soft: #f4faf6;
+    --ka-green-border: #d8eadf;
+
+    --ka-red: #dc3545;
+    --ka-red-light: #fff0f1;
+    --ka-red-border: #f7dfe2;
+
+    --ka-blue: #2563a6;
+    --ka-blue-light: #edf5ff;
+
+    --ka-text: #24352b;
+    --ka-text-secondary: #607066;
+    --ka-muted: #859188;
+
+    --ka-border: #e6ede8;
+    --ka-surface: #ffffff;
+    --ka-surface-soft: #f9fbf9;
+
+    --ka-shadow-sm: 0 3px 12px rgba(28, 61, 42, 0.035);
+    --ka-shadow-md: 0 8px 26px rgba(28, 61, 42, 0.065);
+    --ka-shadow-lg: 0 14px 34px rgba(28, 61, 42, 0.09);
+
+    width: 100%;
+    min-width: 0;
+    color: var(--ka-text);
+}
+
+.dashboard-analytics {
+    font-family: inherit;
+}
+
+.dashboard-analytics *,
+.dashboard-page .dashboard-summary-card * {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   01. KARTU RINGKASAN KEUANGAN
+   ========================================================= */
+
+.dashboard-page .dashboard-summary-card {
+    position: relative;
+    isolation: isolate;
+    height: 100%;
+    min-width: 0;
+    padding: 1.4rem;
+    overflow: hidden;
+
+    background: linear-gradient(
+        145deg,
+        #ffffff 0%,
+        #ffffff 72%,
+        #fbfdfb 100%
+    );
+
+    border: 1px solid var(--ka-border);
+    border-radius: 20px;
+
+    box-shadow: var(--ka-shadow-sm);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* Garis aksen di bagian atas kartu */
+.dashboard-page .dashboard-summary-card::before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+
+    width: 100%;
+    height: 3px;
+
+    background: linear-gradient(
+        90deg,
+        var(--ka-green),
+        #80c59b,
+        transparent
+    );
+
+    content: "";
+}
+
+/* Dekorasi lembut di pojok kartu */
+.dashboard-page .dashboard-summary-card::after {
+    position: absolute;
+    top: -50px;
+    right: -45px;
+    z-index: -1;
+
+    width: 130px;
+    height: 130px;
+
+    background: radial-gradient(
+        circle,
+        rgba(23, 107, 73, 0.055) 0%,
+        rgba(23, 107, 73, 0) 72%
+    );
+
+    border-radius: 50%;
+    pointer-events: none;
+    content: "";
+}
+
+.dashboard-page .dashboard-summary-card:hover {
+    transform: translateY(-4px);
+
+    border-color: #c6e1cf;
+    box-shadow: var(--ka-shadow-lg);
+}
+
+.dashboard-page .dashboard-card-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dashboard-page .dashboard-card-label {
+    margin-bottom: 0.65rem;
+
+    color: var(--ka-text-secondary);
+    font-size: 0.84rem;
+    font-weight: 600;
+    letter-spacing: 0.005em;
+    line-height: 1.5;
+}
+
+.dashboard-page .dashboard-card-value {
+    margin-bottom: 0;
+
+    color: var(--ka-text);
+    font-size: clamp(1.2rem, 1.5vw, 1.65rem);
+    font-weight: 800;
+    line-height: 1.4;
+
+    letter-spacing: -0.045em;
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+}
+
+.dashboard-page .dashboard-card-divider {
+    height: 1px;
+    margin: 1.25rem 0 1rem;
+
+    background: linear-gradient(
+        90deg,
+        #e4ece6 0%,
+        #f0f4f0 75%,
+        transparent 100%
+    );
+}
+
+.dashboard-page .dashboard-card-footer {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.55rem;
+
+    color: var(--ka-muted);
+    font-size: 0.77rem;
+    font-weight: 500;
+    line-height: 1.6;
+}
+
+.dashboard-page .dashboard-status-icon {
+    flex: 0 0 auto;
+    margin-top: 0.1rem;
+    font-size: 0.9rem;
+}
+
+.dashboard-page .dashboard-card-icon {
+    display: flex;
+    flex: 0 0 50px;
+    align-items: center;
+    justify-content: center;
+
+    width: 50px;
+    height: 50px;
+
+    border: 1px solid transparent;
+    border-radius: 16px;
+
+    font-size: 1.15rem;
+
+    transition:
+        transform 0.25s ease,
+        border-radius 0.25s ease;
+}
+
+.dashboard-page .dashboard-summary-card:hover .dashboard-card-icon {
+    transform: translateY(-2px) scale(1.04);
+    border-radius: 18px;
+}
+
+.dashboard-page .icon-income {
+    color: var(--ka-green);
+    background: linear-gradient(145deg, #e7f6ec, #f1faf4);
+    border-color: #d8eddf;
+}
+
+.dashboard-page .icon-expense {
+    color: var(--ka-red);
+    background: linear-gradient(145deg, #fff0f1, #fff7f7);
+    border-color: #f8e0e2;
+}
+
+.dashboard-page .icon-balance {
+    color: var(--ka-blue);
+    background: linear-gradient(145deg, #edf5ff, #f7faff);
+    border-color: #dceaff;
+}
+
+.dashboard-page .status-income {
+    color: #198754;
+}
+
+.dashboard-page .status-expense {
+    color: var(--ka-red);
+}
+
+.dashboard-page .status-balance {
+    color: var(--ka-blue);
+}
+
+
+/* =========================================================
+   02. HEADER PANEL
+   ========================================================= */
+
+.dashboard-analytics .dashboard-panel-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+
+    margin-bottom: 1.35rem;
+}
+
+.dashboard-analytics .dashboard-panel-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    margin-bottom: 0.55rem;
+
+    color: var(--ka-green);
+    font-size: 0.66rem;
+    font-weight: 800;
+    letter-spacing: 0.105em;
+    line-height: 1.5;
+}
+
+.dashboard-analytics .dashboard-panel-title {
+    margin: 0 0 0.45rem;
+
+    color: var(--ka-text);
+    font-size: 1.04rem;
+    font-weight: 800;
+    line-height: 1.45;
+    letter-spacing: -0.025em;
+}
+
+.dashboard-analytics .dashboard-panel-description {
+    margin: 0;
+
+    color: var(--ka-muted);
+    font-size: 0.79rem;
+    font-weight: 400;
+    line-height: 1.7;
+}
+
+.dashboard-analytics .dashboard-panel-icon {
+    display: flex;
+    flex: 0 0 46px;
+    align-items: center;
+    justify-content: center;
+
+    width: 46px;
+    height: 46px;
+
+    border: 1px solid transparent;
+    border-radius: 15px;
+
+    font-size: 1.05rem;
+}
+
+.dashboard-analytics .dashboard-panel-icon-income {
+    color: var(--ka-green);
+    background: linear-gradient(145deg, #e7f5eb, #f2faf4);
+    border-color: #dcefe2;
+}
+
+.dashboard-analytics .dashboard-panel-icon-expense {
+    color: var(--ka-red);
+    background: linear-gradient(145deg, #fff0f1, #fff8f8);
+    border-color: #f8dfe2;
+}
+
+
+/* =========================================================
+   03. PANEL GRAFIK
+   ========================================================= */
+
+.dashboard-analytics .dashboard-chart-panel,
+.dashboard-analytics .dashboard-transaction-panel {
+    position: relative;
+    min-width: 0;
+
+    background: var(--ka-surface);
+    border: 1px solid var(--ka-border);
+    border-radius: 20px;
+
+    box-shadow: var(--ka-shadow-sm);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+.dashboard-analytics .dashboard-chart-panel {
+    padding: 1.5rem;
+}
+
+.dashboard-analytics .dashboard-chart-panel:hover {
+    border-color: #d6e6da;
+    box-shadow: var(--ka-shadow-md);
+}
+
+.dashboard-analytics .dashboard-chart-panel-main {
+    padding: 1.65rem;
+}
+
+/* Area grafik utama */
+.dashboard-analytics .dashboard-chart-canvas-wrap {
+    position: relative;
+    width: 100%;
+    min-width: 0;
+}
+
+.dashboard-analytics .dashboard-chart-canvas-main {
+    height: 320px;
+    padding: 0.7rem 0.5rem 0;
+}
+
+.dashboard-analytics .dashboard-chart-canvas-category {
+    height: 250px;
+    padding: 0.45rem 0;
+}
+
+/* Mencegah canvas melampaui panel */
+.dashboard-analytics .dashboard-chart-canvas-wrap canvas {
+    display: block;
+    max-width: 100%;
+}
+
+.dashboard-analytics .dashboard-category-grid {
+    min-width: 0;
+}
+
+
+/* =========================================================
+   04. CATATAN DI BAWAH GRAFIK
+   ========================================================= */
+
+.dashboard-analytics .dashboard-chart-footnote {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    margin-top: 1.15rem;
+    padding-top: 1rem;
+
+    color: #859188;
+    border-top: 1px solid #edf2ee;
+
+    font-size: 0.73rem;
+    font-weight: 450;
+    line-height: 1.7;
+}
+
+.dashboard-analytics .dashboard-chart-footnote i {
+    flex: 0 0 auto;
+    margin-top: 0.17rem;
+
+    color: #8ba995;
+    font-size: 0.8rem;
+}
+
+
+/* =========================================================
+   05. EMPTY STATE
+   ========================================================= */
+
+.dashboard-analytics .dashboard-chart-empty,
+.dashboard-analytics .dashboard-transaction-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    padding: 2rem 1rem;
+    text-align: center;
+}
+
+.dashboard-analytics .dashboard-chart-empty {
+    min-height: 250px;
+}
+
+.dashboard-analytics .dashboard-transaction-empty {
+    min-height: 280px;
+    padding: 2.5rem 1rem;
+}
+
+.dashboard-analytics .dashboard-empty-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 58px;
+    height: 58px;
+
+    margin-bottom: 1.1rem;
+
+    color: var(--ka-green);
+    background: linear-gradient(145deg, #eaf7ee, #f7fcf8);
+
+    border: 1px solid #dcefe2;
+    border-radius: 19px;
+
+    box-shadow: 0 5px 15px rgba(23, 107, 73, 0.055);
+
+    font-size: 1.35rem;
+}
+
+.dashboard-analytics .dashboard-empty-icon-expense {
+    color: var(--ka-red);
+    background: linear-gradient(145deg, #fff0f1, #fff8f8);
+    border-color: var(--ka-red-border);
+}
+
+.dashboard-analytics .dashboard-chart-empty h6,
+.dashboard-analytics .dashboard-transaction-empty h6 {
+    margin-bottom: 0.5rem;
+
+    color: var(--ka-text);
+    font-size: 0.91rem;
+    font-weight: 750;
+    letter-spacing: -0.015em;
+}
+
+.dashboard-analytics .dashboard-chart-empty p,
+.dashboard-analytics .dashboard-transaction-empty p {
+    max-width: 330px;
+    margin-bottom: 0;
+
+    color: var(--ka-muted);
+    font-size: 0.79rem;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   06. PANEL TRANSAKSI HARI INI
+   ========================================================= */
+
+.dashboard-analytics .dashboard-transaction-panel {
+    padding: 0;
+    overflow: hidden;
+}
+
+.dashboard-analytics .dashboard-transaction-header {
+    align-items: center;
+
+    margin: 0;
+    padding: 1.55rem 1.65rem;
+
+    background: linear-gradient(
+        110deg,
+        #ffffff 0%,
+        #fbfdfb 100%
+    );
+
+    border-bottom: 1px solid var(--ka-border);
+}
+
+.dashboard-analytics .dashboard-transaction-header .dashboard-panel-description {
+    margin-top: 0.2rem;
+}
+
+.dashboard-analytics .dashboard-transactions-count {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.58rem 0.9rem;
+
+    color: var(--ka-green);
+    background: var(--ka-green-light);
+    border: 1px solid var(--ka-green-border);
+    border-radius: 999px;
+
+    font-size: 0.74rem;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.dashboard-analytics .dashboard-transactions-count i {
+    font-size: 0.75rem;
+}
+
+
+/* =========================================================
+   07. TABEL TRANSAKSI
+   ========================================================= */
+
+.dashboard-analytics .dashboard-table-wrap {
+    width: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: #cad9ce #f6f8f6;
+}
+
+.dashboard-analytics .dashboard-table-wrap::-webkit-scrollbar {
+    height: 6px;
+}
+
+.dashboard-analytics .dashboard-table-wrap::-webkit-scrollbar-track {
+    background: #f6f8f6;
+}
+
+.dashboard-analytics .dashboard-table-wrap::-webkit-scrollbar-thumb {
+    background: #cad9ce;
+    border-radius: 999px;
+}
+
+.dashboard-analytics .dashboard-table-wrap::-webkit-scrollbar-thumb:hover {
+    background: #a7bfae;
+}
+
+.dashboard-analytics .dashboard-transaction-table {
+    width: 100%;
+    min-width: 760px;
+
+    margin-bottom: 0;
+
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+/* Heading tabel */
+.dashboard-analytics .dashboard-transaction-table > thead > tr > th {
+    padding: 1rem 1.15rem;
+
+    color: #78877d;
+    background: #f6f9f6;
+
+    border-bottom: 1px solid #e8eee9;
+
+    font-size: 0.69rem;
+    font-weight: 800;
+    letter-spacing: 0.045em;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+/* Isi tabel */
+.dashboard-analytics .dashboard-transaction-table > tbody > tr > td {
+    padding: 1.05rem 1.15rem;
+
+    color: var(--ka-text);
+
+    border-bottom: 1px solid #edf2ee;
+    vertical-align: middle;
+
+    font-size: 0.81rem;
+}
+
+/* Baris tabel */
+.dashboard-analytics .dashboard-transaction-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.dashboard-analytics .dashboard-transaction-table tbody tr:hover {
+    background-color: #f6fbf7;
+}
+
+.dashboard-analytics .dashboard-transaction-table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+/* Kolom waktu */
+.dashboard-analytics .dashboard-transaction-time {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 58px;
+    padding: 0.4rem 0.55rem;
+
+    color: #68796d;
+    background: #f2f6f2;
+    border: 1px solid #e9efea;
+    border-radius: 8px;
+
+    font-size: 0.74rem;
+    font-weight: 650;
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+/* Nama transaksi */
+.dashboard-analytics .dashboard-transaction-name {
+    max-width: 240px;
+
+    color: #293b30;
+    font-size: 0.82rem;
+    font-weight: 750;
+    line-height: 1.55;
+
+    overflow-wrap: anywhere;
+}
+
+.dashboard-analytics .dashboard-transaction-description {
+    display: -webkit-box;
+    max-width: 240px;
+
+    margin-top: 0.3rem;
+    overflow: hidden;
+
+    color: #87938b;
+    font-size: 0.73rem;
+    line-height: 1.6;
+
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+
+/* Label kategori */
+.dashboard-analytics .dashboard-category-pill {
+    display: inline-block;
+    max-width: 180px;
+
+    padding: 0.4rem 0.65rem;
+    overflow: hidden;
+
+    color: #5f7065;
+    background: #f6f8f6;
+    border: 1px solid #e8eee9;
+    border-radius: 8px;
+
+    font-size: 0.71rem;
+    font-weight: 600;
+    line-height: 1.45;
+
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+/* Label jenis transaksi */
+.dashboard-analytics .dashboard-type-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+
+    padding: 0.42rem 0.65rem;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+
+    font-size: 0.7rem;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.dashboard-analytics .dashboard-type-income {
+    color: #176b49;
+    background: #eaf6ee;
+    border-color: #dcefe2;
+}
+
+.dashboard-analytics .dashboard-type-expense {
+    color: #c52f40;
+    background: #fff0f1;
+    border-color: #f6dfe2;
+}
+
+/* Nominal transaksi */
+.dashboard-analytics .dashboard-transaction-amount {
+    display: inline-block;
+
+    padding: 0.42rem 0.6rem;
+
+    border-radius: 8px;
+
+    font-size: 0.79rem;
+    font-weight: 800;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: -0.015em;
+    white-space: nowrap;
+}
+
+.dashboard-analytics .dashboard-amount-income {
+    color: #167547;
+    background: #edf8f0;
+}
+
+.dashboard-analytics .dashboard-amount-expense {
+    color: #c52f40;
+    background: #fff1f2;
+}
+
+
+/* =========================================================
+   08. HEADING RINGKASAN DASHBOARD
+   ========================================================= */
+
+.dashboard-page .dashboard-section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.dashboard-page .dashboard-section-label {
+    display: inline-block;
+    margin-bottom: 0.4rem;
+
+    color: var(--ka-green);
+    font-size: 0.67rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.dashboard-page .dashboard-section-title {
+    margin-bottom: 0.4rem;
+
+    color: var(--ka-text);
+    font-size: 1.12rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+}
+
+.dashboard-page .dashboard-section-description {
+    margin-bottom: 0;
+
+    color: var(--ka-muted);
+    font-size: 0.8rem;
+    line-height: 1.7;
+}
+
+.dashboard-page .dashboard-period-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 0.6rem 0.9rem;
+
+    color: var(--ka-green);
+    background: #f0f8f2;
+    border: 1px solid #dcefe2;
+    border-radius: 999px;
+
+    font-size: 0.74rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   FILTER PERIODE GRAFIK KIRAAI
+   ========================================================= */
+
+.dashboard-analytics .dashboard-filter-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+
+    padding: 1.2rem 1.4rem;
+
+    background: linear-gradient(
+        115deg,
+        #ffffff 0%,
+        #f7fbf8 100%
+    );
+
+    border: 1px solid #e4eee6;
+    border-radius: 17px;
+
+    box-shadow: 0 4px 16px rgba(28, 61, 42, 0.035);
+}
+
+.dashboard-analytics .dashboard-filter-information {
+    min-width: 0;
+}
+
+.dashboard-analytics .dashboard-filter-eyebrow {
+    display: block;
+    margin-bottom: 0.35rem;
+
+    color: #176b49;
+
+    font-size: 0.64rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.dashboard-analytics .dashboard-filter-title {
+    margin: 0 0 0.3rem;
+
+    color: #24352b;
+
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.dashboard-analytics .dashboard-filter-description {
+    margin: 0;
+
+    color: #7a8780;
+
+    font-size: 0.77rem;
+    line-height: 1.65;
+}
+
+.dashboard-analytics .dashboard-filter-control {
+    flex: 0 0 auto;
+    min-width: 185px;
+}
+
+.dashboard-analytics .dashboard-filter-label {
+    display: block;
+    margin-bottom: 0.4rem;
+
+    color: #65756a;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.dashboard-analytics .dashboard-filter-select-wrap {
+    position: relative;
+}
+
+.dashboard-analytics .dashboard-filter-select-wrap > i:first-child {
+    position: absolute;
+    top: 50%;
+    left: 0.85rem;
+    z-index: 2;
+
+    color: #176b49;
+
+    font-size: 0.85rem;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+.dashboard-analytics .dashboard-period-select {
+    min-height: 44px;
+    padding: 0.65rem 2.2rem 0.65rem 2.35rem;
+
+    color: #24352b;
+    background-color: #ffffff;
+
+    border: 1px solid #dce8df;
+    border-radius: 11px;
+
+    box-shadow: none;
+
+    font-size: 0.79rem;
+    font-weight: 650;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.dashboard-analytics .dashboard-period-select:hover {
+    border-color: #b7d8c2;
+}
+
+.dashboard-analytics .dashboard-period-select:focus {
+    border-color: #74b88a;
+
+    box-shadow: 0 0 0 3px rgba(23, 107, 73, 0.09);
+}
+
+.dashboard-analytics .dashboard-filter-chevron {
+    position: absolute;
+    top: 50%;
+    right: 0.85rem;
+
+    color: #849188;
+    font-size: 0.68rem;
+
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+
+
+/* RESPONSIVE FILTER */
+
+@media (max-width: 575.98px) {
+    .dashboard-analytics .dashboard-filter-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 1rem;
+
+        padding: 1.05rem;
+        border-radius: 15px;
+    }
+
+    .dashboard-analytics .dashboard-filter-control {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dashboard-analytics .dashboard-period-select {
+        width: 100%;
+    }
+}
+
+/* Toolbar filter dashboard */
+
+.dashboard-analytics .dashboard-filter-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+
+    padding: 1.25rem 1.4rem;
+    background: linear-gradient(115deg, #fff, #f7fbf8);
+    border: 1px solid #e4eee6;
+    border-radius: 17px;
+    box-shadow: 0 4px 16px rgba(28, 61, 42, 0.035);
+}
+
+.dashboard-analytics .dashboard-filter-information {
+    flex: 1 1 200px;
+    min-width: 0;
+}
+
+.dashboard-analytics .dashboard-filter-eyebrow {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #176b49;
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+}
+
+.dashboard-analytics .dashboard-filter-title {
+    margin-bottom: 0.35rem;
+    color: #24352b;
+    font-size: 0.95rem;
+    font-weight: 800;
+}
+
+.dashboard-analytics .dashboard-filter-description {
+    margin-bottom: 0;
+    color: #7a8780;
+    font-size: 0.77rem;
+    line-height: 1.65;
+}
+
+/* Kelompok periode, tanggal, dan tombol reset */
+
+.dashboard-analytics .dashboard-filter-actions {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+}
+
+.dashboard-analytics .dashboard-filter-control-period {
+    width: 175px;
+}
+
+.dashboard-analytics .dashboard-filter-control-date {
+    width: 155px;
+}
+
+.dashboard-analytics .dashboard-filter-label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: #65756a;
+    font-size: 0.72rem;
+    font-weight: 700;
+}
+
+.dashboard-analytics .dashboard-period-select,
+.dashboard-analytics .dashboard-filter-date-input {
+    width: 100%;
+    min-height: 44px;
+    color: #24352b;
+    background-color: #fff;
+    border: 1px solid #dce8df;
+    border-radius: 11px;
+    box-shadow: none;
+    font-size: 0.77rem;
+    font-weight: 600;
+}
+
+.dashboard-analytics .dashboard-filter-date-input {
+    padding: 0.65rem 0.7rem;
+}
+
+.dashboard-analytics .dashboard-period-select:focus,
+.dashboard-analytics .dashboard-filter-date-input:focus {
+    border-color: #74b88a;
+    box-shadow: 0 0 0 3px rgba(23, 107, 73, 0.09);
+}
+
+/* Tombol reset */
+
+.dashboard-analytics .dashboard-filter-reset {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.65rem 1rem;
+
+    color: #176b49;
+    background: #fff;
+    border: 1px solid #cfe3d5;
+    border-radius: 11px;
+
+    font-size: 0.77rem;
+    font-weight: 750;
+    white-space: nowrap;
+    transition: 0.2s ease;
+}
+
+.dashboard-analytics .dashboard-filter-reset:hover:not(:disabled) {
+    color: #fff;
+    background: #176b49;
+    border-color: #176b49;
+    transform: translateY(-1px);
+}
+
+.dashboard-analytics .dashboard-filter-reset:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/* Tampilan HP */
+
+@media (max-width: 991.98px) {
+    .dashboard-analytics .dashboard-filter-toolbar {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dashboard-analytics .dashboard-filter-actions {
+        width: 100%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .dashboard-analytics .dashboard-filter-toolbar {
+        padding: 1.05rem;
+    }
+
+    .dashboard-analytics .dashboard-filter-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        align-items: end;
+        width: 100%;
+    }
+
+    .dashboard-analytics .dashboard-filter-control-period,
+    .dashboard-analytics .dashboard-filter-reset {
+        grid-column: 1 / -1;
+        width: 100%;
+    }
+
+    .dashboard-analytics .dashboard-filter-control-date {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .dashboard-analytics .dashboard-filter-date-input {
+        min-width: 0;
+        padding-right: 0.3rem;
+        padding-left: 0.4rem;
+        font-size: 0.7rem;
+    }
+}
+/* =========================================================
+   09. RESPONSIVE TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .dashboard-page .dashboard-summary-card {
+        padding: 1.2rem;
+    }
+
+    .dashboard-analytics .dashboard-chart-panel {
+        padding: 1.3rem;
+    }
+
+    .dashboard-analytics .dashboard-chart-panel-main {
+        padding: 1.4rem;
+    }
+
+    .dashboard-analytics .dashboard-chart-canvas-main {
+        height: 295px;
+    }
+
+    .dashboard-analytics .dashboard-chart-canvas-category {
+        height: 255px;
+    }
+
+    .dashboard-analytics .dashboard-transaction-header {
+        padding: 1.35rem;
+    }
+}
+
+
+/* =========================================================
+   10. RESPONSIVE MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .dashboard-page .dashboard-summary-card {
+        padding: 1.1rem;
+        border-radius: 17px;
+    }
+
+    .dashboard-page .dashboard-card-label {
+        font-size: 0.8rem;
+    }
+
+    .dashboard-page .dashboard-card-value {
+        font-size: clamp(1.08rem, 5vw, 1.35rem);
+    }
+
+    .dashboard-page .dashboard-card-icon {
+        flex-basis: 43px;
+        width: 43px;
+        height: 43px;
+        border-radius: 14px;
+        font-size: 1rem;
+    }
+
+    .dashboard-page .dashboard-card-divider {
+        margin: 1rem 0 0.85rem;
+    }
+
+    .dashboard-page .dashboard-card-footer {
+        font-size: 0.74rem;
+    }
+
+    .dashboard-page .dashboard-section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .dashboard-page .dashboard-section-title {
+        font-size: 1.05rem;
+    }
+
+    .dashboard-analytics .dashboard-chart-panel,
+    .dashboard-analytics .dashboard-chart-panel-main {
+        padding: 1.05rem;
+        border-radius: 17px;
+    }
+
+    .dashboard-analytics .dashboard-panel-header {
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .dashboard-analytics .dashboard-panel-kicker {
+        font-size: 0.61rem;
+    }
+
+    .dashboard-analytics .dashboard-panel-title {
+        font-size: 0.94rem;
+    }
+
+    .dashboard-analytics .dashboard-panel-description {
+        font-size: 0.75rem;
+    }
+
+    .dashboard-analytics .dashboard-panel-icon {
+        flex-basis: 39px;
+        width: 39px;
+        height: 39px;
+        border-radius: 12px;
+        font-size: 0.9rem;
+    }
+
+    .dashboard-analytics .dashboard-chart-canvas-main {
+        height: 250px;
+        padding: 0.35rem 0;
+    }
+
+    .dashboard-analytics .dashboard-chart-canvas-category {
+        height: 235px;
+    }
+
+    .dashboard-analytics .dashboard-chart-footnote {
+        margin-top: 0.85rem;
+        padding-top: 0.8rem;
+        font-size: 0.7rem;
+    }
+
+    .dashboard-analytics .dashboard-transaction-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 0.85rem;
+        padding: 1.15rem;
+    }
+
+    .dashboard-analytics .dashboard-transactions-count {
+        padding: 0.5rem 0.75rem;
+        font-size: 0.71rem;
+    }
+
+    .dashboard-analytics .dashboard-chart-empty {
+        min-height: 225px;
+    }
+
+    .dashboard-analytics .dashboard-transaction-empty {
+        min-height: 235px;
+    }
+}
+
+
+/* =========================================================
+   11. REDUCED MOTION
+   Menghormati preferensi animasi pengguna.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .dashboard-page .dashboard-summary-card,
+    .dashboard-page .dashboard-card-icon,
+    .dashboard-analytics .dashboard-chart-panel,
+    .dashboard-analytics .dashboard-transaction-table tbody tr {
+        transition: none !important;
+    }
+
+    .dashboard-page .dashboard-summary-card:hover,
+    .dashboard-page .dashboard-summary-card:hover .dashboard-card-icon {
+        transform: none;
+    }
+
+}

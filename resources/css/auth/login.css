@@ -1,0 +1,461 @@
+/* =====================================
+   UANGKU - LOGIN
+===================================== */
+
+.auth-login-body {
+    min-height: 100vh;
+    margin: 0;
+    background:
+        radial-gradient(circle at 10% 10%, #e1f4e7 0, transparent 30%),
+        radial-gradient(circle at 90% 90%, #e4f4e9 0, transparent 30%),
+        #f5f9f6;
+    color: #25382d;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.auth-login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+}
+
+.auth-login-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+    max-width: 1080px;
+    min-height: 640px;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid #e2eee6;
+    border-radius: 27px;
+    box-shadow: 0 25px 70px rgba(25, 80, 48, 0.10);
+}
+
+/* =====================================
+   PANEL KIRI: INTRO / BRANDING
+===================================== */
+
+.auth-login-intro {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 42px;
+    overflow: hidden;
+    isolation: isolate;
+    color: #ffffff;
+    background: linear-gradient(145deg, #176b49, #10452f);
+}
+
+.auth-login-intro::before {
+    position: absolute;
+    z-index: -1;
+    top: -100px;
+    right: -110px;
+    width: 330px;
+    height: 330px;
+    content: "";
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 50%;
+    box-shadow:
+        0 0 0 30px rgba(255, 255, 255, 0.025),
+        0 0 0 65px rgba(255, 255, 255, 0.02);
+}
+
+.auth-login-intro::after {
+    position: absolute;
+    z-index: -1;
+    bottom: -160px;
+    left: -90px;
+    width: 300px;
+    height: 300px;
+    content: "";
+    background: rgba(72, 190, 119, 0.09);
+    border-radius: 50%;
+}
+
+.auth-brand {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    gap: 12px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.auth-brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+    font-size: 21px;
+}
+
+.auth-brand strong {
+    display: block;
+    font-size: 23px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.auth-brand strong span {
+    color: #80e5a2;
+}
+
+.auth-brand small {
+    display: block;
+    margin-top: 2px;
+    color: #c6e6d1;
+    font-size: 8px;
+    letter-spacing: 2px;
+}
+
+.auth-intro-content {
+    max-width: 440px;
+}
+
+.auth-eyebrow {
+    display: inline-block;
+    margin-bottom: 19px;
+    padding: 8px 12px;
+    color: #b9f1ca;
+    background: rgba(255, 255, 255, 0.09);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 30px;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.auth-intro-content h1 {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: clamp(29px, 3vw, 39px);
+    font-weight: 800;
+    line-height: 1.3;
+    letter-spacing: -1px;
+}
+
+.auth-intro-content h1 span {
+    color: #83e2a2;
+}
+
+.auth-intro-content > p {
+    margin: 0 0 30px;
+    color: #d0e6d7;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.auth-feature {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    margin-top: 17px;
+}
+
+.auth-feature-icon {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 43px;
+    height: 43px;
+    color: #9be8b4;
+    background: rgba(255, 255, 255, 0.10);
+    border-radius: 13px;
+    font-size: 17px;
+}
+
+.auth-feature strong {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-size: 12px;
+}
+
+.auth-feature small {
+    display: block;
+    color: #c0ddca;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+.auth-intro-footer {
+    color: #c0ddca;
+    font-size: 10px;
+    letter-spacing: 0.3px;
+}
+
+/* =====================================
+   PANEL KANAN: FORM LOGIN
+===================================== */
+
+.auth-login-form-panel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 45px;
+    background: #ffffff;
+}
+
+.auth-form-container {
+    width: 100%;
+    max-width: 365px;
+}
+
+.auth-form-heading {
+    margin-bottom: 30px;
+}
+
+.auth-form-label {
+    display: block;
+    margin-bottom: 9px;
+    color: #198754;
+    font-size: 9px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+}
+
+.auth-form-heading h2 {
+    margin: 0;
+    color: #25382d;
+    font-size: 27px;
+    font-weight: 800;
+    letter-spacing: -0.8px;
+}
+
+.auth-form-heading p {
+    margin: 10px 0 0;
+    color: #839087;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.auth-input-label {
+    display: block;
+    margin-bottom: 9px;
+    color: #344b3a;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* PERBAIKAN: Optimalisasi Layout Kotak Input */
+.auth-input-group.input-group {
+    display: flex;
+    align-items: center; /* Meratakan posisi atas-bawah ikon dan teks ketik */
+    flex-wrap: nowrap;
+    border: 1px solid #dce9df;
+    border-radius: 11px;
+    background: #ffffff;
+    height: 49px; /* Kunci tinggi tetap agar konsisten */
+    overflow: hidden;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.auth-input-group.input-group:focus-within {
+    border-color: #198754;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.09);
+}
+
+.auth-input-group .input-group-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    height: 100%; /* Isi penuh tinggi container */
+    color: #198754;
+    background: #f0f8f2;
+    border: 0 !important;
+    border-radius: 0;
+    font-size: 13px;
+    margin: 0;
+}
+
+.auth-input-group .form-control {
+    flex: 1;
+    min-width: 0;
+    height: 100%; /* Isi penuh tinggi container */
+    padding: 0 14px; /* Padding samping yang seimbang */
+    color: #25382d;
+    background: transparent;
+    border: 0 !important;
+    box-shadow: none !important;
+    font-size: 13px;
+}
+
+.auth-input-group .form-control::placeholder {
+    color: #a0aaa3;
+}
+
+/* Penanganan style jika kolom divalidasi error oleh Laravel */
+.auth-input-group .form-control.is-invalid {
+    border: 0 !important;
+    background-image: none !important; /* Hapus tanda centang/silang default Bootstrap */
+}
+
+/* Garis tepi merah jika input group mendeteksi error */
+.auth-input-group.input-groupHasError {
+    border-color: #dc3545 !important;
+}
+
+.auth-remember {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.auth-remember .form-check-input {
+    margin: 0;
+    cursor: pointer;
+    border-color: #cbdace;
+}
+
+.auth-remember .form-check-input:checked {
+    background-color: #198754;
+    border-color: #198754;
+}
+
+.auth-remember .form-check-label {
+    color: #718078;
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.auth-login-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    min-height: 49px;
+    padding: 12px 16px;
+    color: #ffffff;
+    background: linear-gradient(135deg, #198754, #116342);
+    border: 0;
+    border-radius: 12px;
+    box-shadow: 0 7px 16px rgba(25, 135, 84, 0.17);
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.auth-login-button:hover {
+    box-shadow: 0 10px 22px rgba(25, 135, 84, 0.24);
+    transform: translateY(-1px);
+}
+
+.auth-register-link {
+    margin-top: 25px;
+    color: #7d8980;
+    text-align: center;
+    font-size: 11px;
+}
+
+.auth-register-link a {
+    color: #198754;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.auth-register-link a:hover {
+    color: #116342;
+    text-decoration: underline;
+}
+
+.auth-security-note {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 7px;
+    margin-top: 38px;
+    color: #9aa59d;
+    font-size: 10px;
+}
+
+.auth-security-note i {
+    color: #198754;
+}
+
+.auth-mobile-icon {
+    display: none;
+}
+
+/* =====================================
+   RESPONSIF TABLET & HP
+===================================== */
+
+@media (max-width: 850px) {
+    .auth-login-page {
+        padding: 20px;
+    }
+
+    .auth-login-card {
+        grid-template-columns: 0.9fr 1.1fr;
+        min-height: 580px;
+    }
+
+    .auth-login-intro {
+        padding: 28px;
+        gap: 30px;
+    }
+
+    .auth-login-form-panel {
+        padding: 30px;
+    }
+
+    .auth-intro-content h1 {
+        font-size: 29px;
+    }
+}
+
+@media (max-width: 650px) {
+    .auth-login-page {
+        align-items: flex-start;
+        padding: 14px;
+    }
+
+    .auth-login-card {
+        grid-template-columns: 1fr;
+        max-width: 440px;
+        min-height: auto;
+        margin: auto;
+        border-radius: 22px;
+    }
+
+    .auth-login-intro {
+        display: none;
+    }
+
+    .auth-login-form-panel {
+        padding: 35px 25px;
+    }
+
+    .auth-form-heading {
+        margin-bottom: 24px;
+        text-align: center;
+    }
+
+    .auth-mobile-icon {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 15px;
+        color: #198754;
+        background: #f0f8f2;
+        border-radius: 50%;
+        font-size: 20px;
+    }
+}
