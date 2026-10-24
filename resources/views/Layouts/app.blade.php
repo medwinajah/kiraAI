@@ -33,26 +33,41 @@
                 <section class="border-bottom pb-3 d-flex flex-column gap-2 mt-3"
                     style="border-color: rgba(255,255,255,0.15) !important;">
 
+
                     <div class="d-flex align-items-center gap-2">
-                        <div class="d-flex align-items-center justify-content-center rounded-3 shadow-sm"
-                            style="width: 42px; height: 42px; flex-shrink: 0;
-                    background: linear-gradient(135deg, #198754, #116342);
-                    color: #ffffff;">
-                            <i class="fa-solid fa-wallet fs-5"></i>
+
+                        {{-- Logo KiraAI berbentuk bulat --}}
+                        <div class="d-flex align-items-center justify-content-center rounded-circle shadow-sm overflow-hidden"
+                            style="
+            width: 42px;
+            height: 42px;
+            flex-shrink: 0;
+            padding: 2px;
+            background: #ffffff;
+            border: 1px solid rgba(69, 200, 120, 0.4);
+        ">
+                            <img src="{{ asset('img/LogoKiraAI.jpeg') }}" alt="Logo KiraAI"
+                                class="w-100 h-100 rounded-circle" style="object-fit: cover; object-position: center;">
                         </div>
 
+                        {{-- Nama aplikasi --}}
                         <div>
                             <h3 class="mb-0 fw-bold text-white" style="font-size: 21px; letter-spacing: 1.5px;">
                                 KIRA<span style="color: #45c878;">AI</span>
                             </h3>
 
                             <span class="small"
-                                style="font-size: 9px; letter-spacing: 1.5px;
-                         color: #8fbea0;">
+                                style="
+                font-size: 9px;
+                letter-spacing: 1.5px;
+                color: #8fbea0;
+            ">
                                 PERSONAL FINANCE
                             </span>
                         </div>
+
                     </div>
+
 
                     <p class="text-white-50 small mb-0" style="font-size: 11px; line-height: 1.7;">
                         Sistem Manajemen Keuangan
@@ -114,12 +129,14 @@
                                 class="w-100 px-2 py-2 {{ request()->routeIs('laporanpemasukan.*') ? 'text-white fw-bold bg-active' : '' }}   rounded-2 small list">
                                 <a href="{{ route('laporanpemasukan.index') }}"
                                     class="text-decoration-none text-white d-flex gap-3 fw-semibold align-items-center">
-                                    <span><i class="fa-solid fa-circle-down fs-5"></i></span>Laporan Pemasukan</a></li>
+                                    <span><i class="fa-solid fa-circle-down fs-5"></i></span>Laporan Pemasukan</a>
+                            </li>
                             <li
                                 class="w-100 px-2 py-2 {{ request()->routeIs('laporanpengeluaran.*') ? 'text-white fw-bold bg-active' : '' }}  rounded-2 small list">
                                 <a href="{{ route('laporanpengeluaran.index') }}"
                                     class="text-decoration-none text-white d-flex gap-3 fw-semibold align-items-center">
-                                    <span><i class="fa-solid fa-circle-up fs-5"></i></span>Laporan Pengeluaran</a></li>
+                                    <span><i class="fa-solid fa-circle-up fs-5"></i></span>Laporan Pengeluaran</a>
+                            </li>
                         </section>
                         <section class="mb-3 d-flex flex-column gap-2">
                             <li class="fw-semibold text-white-50 small"> Profile</li>
@@ -158,33 +175,33 @@
 
                         {{-- Informasi Akun Pengguna (Disusun Menumpuk ke Bawah) --}}
                         <a href="{{ route('profile.index') }}" wire:navigate style="text-decoration: none;">
-                        <div class="d-flex flex-column align-items-center text-center border-end pe-3 pt-2"
-                            style="border-color: #dee2e6 !important;">
+                            <div class="d-flex flex-column align-items-center text-center border-end pe-3 pt-2"
+                                style="border-color: #dee2e6 !important;">
 
-                            {{-- Foto Profil / Dummy di bagian atas --}}
-                            @if (auth()->user()->profile)
-                                <img src="{{ \Illuminate\Support\Facades\Storage::url(auth()->user()->profile) }}"
-                                    alt="Foto profil {{ auth()->user()->nama }}" class="rounded-circle border mb-1"
-                                    style="width: 38px; height: 38px; object-fit: cover; border-color: #dee2e6 !important;">
-                            @else
-                                {{-- Gambar Profile Dummy Netral (Warna Abu-abu Biasa) --}}
-                                <div class="rounded-circle d-flex align-items-center justify-content-center border bg-light mb-1 text-secondary"
-                                    style="width: 38px; height: 38px; flex-shrink: 0; border-color: #dee2e6 !important;">
-                                    <i class="fa-solid fa-user" style="font-size: 14px;"></i>
+                                {{-- Foto Profil / Dummy di bagian atas --}}
+                                @if (auth()->user()->profile)
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url(auth()->user()->profile) }}"
+                                        alt="Foto profil {{ auth()->user()->nama }}" class="rounded-circle border mb-1"
+                                        style="width: 38px; height: 38px; object-fit: cover; border-color: #dee2e6 !important;">
+                                @else
+                                    {{-- Gambar Profile Dummy Netral (Warna Abu-abu Biasa) --}}
+                                    <div class="rounded-circle d-flex align-items-center justify-content-center border bg-light mb-1 text-secondary"
+                                        style="width: 38px; height: 38px; flex-shrink: 0; border-color: #dee2e6 !important;">
+                                        <i class="fa-solid fa-user" style="font-size: 14px;"></i>
+                                    </div>
+                                @endif
+
+                                {{-- Keterangan Nama dan Email di bagian bawah --}}
+                                <div class="leading-tight">
+                                    <p class="mb-0 fw-bold text-dark" style="font-size: 14px; line-height: 1.1;">
+                                        {{ auth()->user()->name }}
+                                    </p>
+
+                                    <small class="text-muted d-block" style="font-size: 10px; line-height: 1.1;">
+                                        {{ auth()->user()->email }}
+                                    </small>
                                 </div>
-                            @endif
-
-                            {{-- Keterangan Nama dan Email di bagian bawah --}}
-                            <div class="leading-tight">
-                                <p class="mb-0 fw-bold text-dark" style="font-size: 14px; line-height: 1.1;">
-                                    {{ auth()->user()->name }}
-                                </p>
-
-                                <small class="text-muted d-block" style="font-size: 10px; line-height: 1.1;">
-                                    {{ auth()->user()->email }}
-                                </small>
                             </div>
-                        </div>
                         </a>
 
                         {{-- Tombol Logout Netral (Normal: Abu-abu/Gelap Biasa, Hover: Merah Danger) --}}
