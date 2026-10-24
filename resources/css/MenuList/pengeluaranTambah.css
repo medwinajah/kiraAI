@@ -1,91 +1,482 @@
+/* =========================================================
+   KIRAAI — FORM TAMBAH PENGELUARAN
+   Bootstrap 5.3.8
+   ========================================================= */
 
-/* Form tambah pemasukan - tema hijau */
+.expense-create-page {
+    --expense-green: #198754;
+    --expense-green-dark: #146c43;
+    --expense-green-soft: #edf6f0;
 
-.container.row.rounded-3.mt-1.py-3.align-items-center.w-100.m-auto > section {
-    background: linear-gradient(135deg, #ffffff, #f8fcf9);
-    border-color: #e2eee6 !important;
-    border-radius: 20px !important;
+    --expense-text: #27372d;
+    --expense-secondary: #68766d;
+    --expense-border: #dfe7e1;
+    --expense-background: #f8faf8;
+    --expense-danger: #dc3545;
+
+    min-width: 0;
+    color: var(--expense-text);
 }
 
-/* Judul form */
-.bg-tambah {
-    background: linear-gradient(135deg, #198754, #116342) !important;
-    border-color: #198754 !important;
-    padding: 16px 12px;
+.expense-create-page *,
+.expense-create-page *::before,
+.expense-create-page *::after {
+    box-sizing: border-box;
 }
 
-/* Label input */
-.container.row.rounded-3.mt-1.py-3 label {
-    color: #344b3a;
-}
 
-/* Input dan select */
-.container.row.rounded-3.mt-1.py-3 .border.rounded-3.p-0.d-flex {
-    overflow: hidden;
+/* =========================================================
+   01. KARTU FORM
+   ========================================================= */
+
+.expense-create-card {
+    min-width: 0;
+    padding: 1.6rem;
+
     background: #ffffff;
-    border-color: #dcebe0 !important;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    border: 1px solid var(--expense-border);
+    border-radius: 14px;
 }
 
-/* Ikon input */
-.container.row.rounded-3.mt-1.py-3 .border.rounded-3.p-0.d-flex > span {
+
+/* =========================================================
+   02. NAVIGASI
+   ========================================================= */
+
+.expense-create-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+
+    padding-bottom: 1rem;
+    margin-bottom: 1.4rem;
+
+    border-bottom: 1px solid #edf0ed;
+}
+
+.expense-back-link {
+    display: inline-flex;
+    align-items: center;
+
+    color: var(--expense-secondary);
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-decoration: none;
+
+    transition: color 0.15s ease;
+}
+
+.expense-back-link:hover {
+    color: var(--expense-green);
+}
+
+.expense-page-label {
+    color: var(--expense-green);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   03. JUDUL FORM
+   ========================================================= */
+
+.expense-create-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.9rem;
+
+    margin-bottom: 1.7rem;
+}
+
+.expense-heading-icon {
+    display: flex;
+    flex: 0 0 44px;
+    align-items: center;
     justify-content: center;
-    min-width: 42px;
-    color: #198754;
-    background: #edf7f0;
+
+    width: 44px;
+    height: 44px;
+
+    color: var(--expense-green);
+    background: var(--expense-green-soft);
+    border: 1px solid #deebe1;
+    border-radius: 10px;
+
+    font-size: 1.05rem;
 }
 
-/* Efek ketika input dipilih */
-.container.row.rounded-3.mt-1.py-3 .border.rounded-3.p-0.d-flex:focus-within {
-    border-color: #198754 !important;
-    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.10);
+.expense-create-heading h1 {
+    margin: 0 0 0.35rem;
+
+    color: var(--expense-text);
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.025em;
+    line-height: 1.4;
 }
 
-/* Teks input */
-.container.row.rounded-3.mt-1.py-3 .form-control,
-.container.row.rounded-3.mt-1.py-3 .form-select {
-    font-size: 13px;
-    color: #344b3a;
+.expense-create-heading p {
+    max-width: 580px;
+    margin: 0;
+
+    color: var(--expense-secondary);
+    font-size: 0.81rem;
+    line-height: 1.65;
 }
 
-.container.row.rounded-3.mt-1.py-3 .form-control:focus,
-.container.row.rounded-3.mt-1.py-3 .form-select:focus {
+
+/* =========================================================
+   04. BAGIAN FORM
+   ========================================================= */
+
+.expense-section-title {
+    margin: 0 0 0.35rem;
+
+    color: var(--expense-text);
+    font-size: 0.95rem;
+    font-weight: 700;
+}
+
+.expense-section-description {
+    margin: 0 0 1.25rem;
+
+    color: var(--expense-secondary);
+    font-size: 0.78rem;
+    line-height: 1.6;
+}
+
+.expense-form-section {
+    padding-bottom: 1.5rem;
+}
+
+.expense-form-label {
+    display: block;
+    margin-bottom: 0.45rem;
+
+    color: #394a3f;
+    font-size: 0.79rem;
+    font-weight: 600;
+}
+
+
+/* =========================================================
+   05. INPUT, SELECT, DAN INPUT GROUP
+   ========================================================= */
+
+.expense-create-page .form-control,
+.expense-create-page .form-select {
+    min-width: 0;
+    min-height: 43px;
+
+    color: var(--expense-text);
+    background-color: #ffffff;
+
+    border: 1px solid var(--expense-border);
+    border-radius: 8px;
+
+    box-shadow: none;
+    font-size: 0.82rem;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.expense-create-page .form-control::placeholder {
+    color: #9aa69e;
+    opacity: 1;
+}
+
+.expense-create-page .form-control:focus,
+.expense-create-page .form-select:focus {
+    border-color: #7fb496;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.08);
+}
+
+.expense-create-page .input-group.expense-input-group {
+    flex-wrap: nowrap;
+    overflow: hidden;
+
+    background: #ffffff;
+    border: 1px solid var(--expense-border);
+    border-radius: 8px;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+}
+
+.expense-create-page .expense-input-group:focus-within {
+    border-color: #7fb496;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.08);
+}
+
+.expense-create-page .expense-input-group .input-group-text {
+    display: flex;
+    flex: 0 0 42px;
+    align-items: center;
+    justify-content: center;
+
+    width: 42px;
+    padding: 0.65rem;
+
+    color: #63816d;
+    background: #f7faf7;
+
+    border: 0;
+    border-radius: 0;
+
+    font-size: 0.85rem;
+}
+
+.expense-create-page .expense-input-group .form-control,
+.expense-create-page .expense-input-group .form-select {
+    flex: 1 1 auto;
+    width: 1%;
+    min-width: 0;
+
+    border: 0;
+    border-radius: 0;
     box-shadow: none;
 }
 
-/* Tombol tambah */
-.btn-tambah {
-    background: #198754 !important;
-    border: 1px solid #198754 !important;
-    transition: background 0.2s, transform 0.2s;
+.expense-create-page .expense-input-group .form-control:focus,
+.expense-create-page .expense-input-group .form-select:focus {
+    border: 0;
+    box-shadow: none;
 }
 
-.btn-tambah:hover {
-    background: #116342 !important;
-    transform: translateY(-1px);
+.expense-create-page .expense-input-group:has(.is-invalid) {
+    border-color: var(--expense-danger);
 }
 
-/* Tombol kembali */
-.container.row.rounded-3.mt-1.py-3 .btn-outline-secondary {
-    color: #477057;
-    border-color: #d5e6da;
+.expense-create-page .expense-input-group .is-invalid {
+    background-image: none;
 }
 
-.container.row.rounded-3.mt-1.py-3 .btn-outline-secondary:hover {
-    color: #ffffff;
-    background: #198754;
-    border-color: #198754;
-}
 
-/* Tombol batal */
-.container.row.rounded-3.mt-1.py-3 .btn-outline-danger {
-    color: #52675a;
+/* =========================================================
+   06. KOMPONEN JUMLAH LIVEWIRE
+   Menyesuaikan input group dari komponen yang sudah ada
+   ========================================================= */
+
+.expense-create-page .border.rounded-3.p-0.d-flex.align-items-center {
+    overflow: hidden;
+
     background: #ffffff;
-    border-color: #dcebe0;
+    border-color: var(--expense-border) !important;
+    border-radius: 8px !important;
+
+    transition:
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
 }
 
-.container.row.rounded-3.mt-1.py-3 .btn-outline-danger:hover {
+.expense-create-page .border.rounded-3.p-0.d-flex.align-items-center:focus-within {
+    border-color: #7fb496 !important;
+    box-shadow: 0 0 0 3px rgba(25, 135, 84, 0.08);
+}
+
+.expense-create-page .border.rounded-3.p-0.d-flex.align-items-center > span {
+    display: flex;
+    flex: 0 0 42px;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 42px;
+
+    color: #63816d;
+    background: #f7faf7;
+}
+
+.expense-create-page .border.rounded-3.p-0.d-flex.align-items-center > .form-control,
+.expense-create-page .border.rounded-3.p-0.d-flex.align-items-center > .form-select {
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   07. DESKRIPSI
+   ========================================================= */
+
+.expense-create-page .expense-textarea {
+    min-height: 95px;
+    padding: 0.75rem 0.85rem;
+
+    line-height: 1.65;
+    resize: vertical;
+}
+
+
+/* =========================================================
+   08. VALIDASI DAN BANTUAN
+   ========================================================= */
+
+.expense-create-page .expense-error-message {
+    margin-top: 0.4rem;
+
+    color: var(--expense-danger);
+    font-size: 0.74rem;
+    line-height: 1.55;
+}
+
+.expense-create-page .expense-field-help {
+    display: block;
+    margin-top: 0.45rem;
+
+    color: var(--expense-secondary);
+    font-size: 0.73rem;
+    line-height: 1.6;
+}
+
+.expense-create-page .expense-form-alert {
+    margin-bottom: 1.25rem;
+    padding: 0.9rem 1rem;
+
+    border-radius: 9px;
+    font-size: 0.82rem;
+}
+
+
+/* =========================================================
+   09. FOOTER DAN TOMBOL
+   ========================================================= */
+
+.expense-form-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+
+    padding-top: 1.2rem;
+    border-top: 1px solid #edf0ed;
+}
+
+.expense-form-note {
+    margin: 0;
+
+    color: var(--expense-secondary);
+    font-size: 0.75rem;
+}
+
+.expense-create-page .expense-btn-cancel,
+.expense-create-page .expense-btn-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 41px;
+    padding: 0.65rem 1rem;
+
+    border-radius: 8px;
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.expense-create-page .expense-btn-cancel {
+    color: #536259;
+    background: #ffffff;
+    border: 1px solid #d8e1da;
+}
+
+.expense-create-page .expense-btn-cancel:hover {
+    color: var(--expense-text);
+    background: #f5f8f5;
+    border-color: #c7d5ca;
+}
+
+.expense-create-page .expense-btn-submit {
     color: #ffffff;
-    background: #6c8573;
-    border-color: #6c8573;
+    background: var(--expense-green);
+    border: 1px solid var(--expense-green);
+}
+
+.expense-create-page .expense-btn-submit:hover {
+    color: #ffffff;
+    background: var(--expense-green-dark);
+    border-color: var(--expense-green-dark);
+}
+
+.expense-create-page .expense-btn-submit:disabled {
+    color: #ffffff;
+    background: #9aafa1;
+    border-color: #9aafa1;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+   10. RESPONSIVE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+    .expense-create-page {
+        padding-right: 0.75rem !important;
+        padding-left: 0.75rem !important;
+    }
+
+    .expense-create-card {
+        padding: 1.1rem;
+        border-radius: 11px;
+    }
+
+    .expense-create-heading {
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .expense-heading-icon {
+        flex-basis: 40px;
+        width: 40px;
+        height: 40px;
+    }
+
+    .expense-create-heading h1 {
+        font-size: 1.15rem;
+    }
+
+    .expense-create-heading p {
+        font-size: 0.78rem;
+    }
+
+    .expense-form-footer {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .expense-form-footer > .d-flex {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr;
+        width: 100%;
+    }
+
+    .expense-form-footer .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 380px) {
+    .expense-form-footer > .d-flex {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .expense-create-page *,
+    .expense-create-page *::before,
+    .expense-create-page *::after {
+        transition: none !important;
+    }
 }

@@ -25,7 +25,7 @@
                     </h2>
 
                     <p class="dashboard-welcome-description">
-                        Selamat datang kembali di UANGKU.
+                        Selamat datang kembali di <span class="fw-bold">kiraAI.</span>
                         Pantau pemasukan dan pengeluaranmu untuk membantu
                         menjaga kondisi keuangan tetap teratur.
                     </p>
@@ -71,7 +71,7 @@
                 </h5>
 
                 <p class="dashboard-section-description">
-                    Berikut ringkasan keuangan yang sudah tercatat di UANGKU.
+                    Berikut ringkasan keuangan yang sudah tercatat di <span class="fw-bold">kiraAI</span>.
                 </p>
             </div>
 

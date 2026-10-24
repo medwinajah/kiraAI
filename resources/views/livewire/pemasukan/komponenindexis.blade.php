@@ -1,122 +1,389 @@
 <div class="income-page">
-   {{-- Filter Data --}}
-   <section>
-    
-   <div class="row p-lg-4 p-2 py-4 mt-2 border rounded-4 shadow-sm g-2 income-filter-card">
-    <section >
-    <h3 class="fw-bold small fs-4">Filter Data <span class="text-success"> Pemasukan </span></h3>
-    <p class="small fw-light">Filter data pemasukan yang pernah anda buat sebelumnya.</p>
+
+    {{-- Filter Data Pemasukan --}}
+    <section class="card border-0 shadow-sm rounded-4 mb-3 income-filter-card">
+        <div class="card-body p-3 p-lg-4">
+
+            <div class="d-flex align-items-start justify-content-between flex-wrap gap-2 mb-4">
+                <div>
+                    <span class="badge rounded-pill bg-success-subtle text-success mb-2 px-3 py-2">
+                        <i class="fa-solid fa-filter me-1"></i>
+                        Filter Transaksi
+                    </span>
+
+                    <h4 class="fw-bold mb-1">
+                        Filter Data <span class="text-success">Pemasukan</span>
+                    </h4>
+
+                    <p class="text-secondary small mb-0">
+                        Temukan data pemasukan berdasarkan tanggal atau kata kunci.
+                    </p>
+                </div>
+
+                <div class="d-flex align-items-center gap-2 text-success small fw-semibold">
+                    <i class="fa-solid fa-wallet"></i>
+                    Data Pemasukan
+                </div>
+            </div>
+
+            <div class="row g-3 align-items-end">
+
+                {{-- Tanggal --}}
+                <div class="col-lg-6">
+                    <div class="row g-2">
+
+                        <div class="col-sm-6">
+                            <label for="tanggal_mulai"
+                                   class="form-label small fw-semibold">
+                                Tanggal Awal
+                            </label>
+
+                            <div class="input-group border rounded-3 overflow-hidden bg-white">
+                                <span class="input-group-text bg-white border-0 text-success">
+                                    <i class="fa-solid fa-calendar-days"></i>
+                                </span>
+
+                                <input
+                                    type="date"
+                                    id="tanggal_mulai"
+                                    wire:model.live.debounce.300ms="tanggal_mulai"
+                                    class="form-control border-0 shadow-none py-2"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <label for="tanggal_selesai"
+                                   class="form-label small fw-semibold">
+                                Tanggal Akhir
+                            </label>
+
+                            <div class="input-group border rounded-3 overflow-hidden bg-white">
+                                <span class="input-group-text bg-white border-0 text-success">
+                                    <i class="fa-solid fa-calendar-check"></i>
+                                </span>
+
+                                <input
+                                    type="date"
+                                    id="tanggal_selesai"
+                                    wire:model.live.debounce.300ms="tanggal_selesai"
+                                    class="form-control border-0 shadow-none py-2"
+                                >
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                {{-- Pencarian --}}
+                <div class="col-lg-5 col-md-9">
+                    <label for="search_pemasukan"
+                           class="form-label small fw-semibold">
+                        Cari Pemasukan
+                    </label>
+
+                    <div class="input-group border rounded-3 overflow-hidden bg-white">
+                        <span class="input-group-text bg-white border-0 text-success">
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </span>
+
+                        <input
+                            type="search"
+                            id="search_pemasukan"
+                            wire:model.live.debounce.300ms="search"
+                            placeholder="Cari label atau deskripsi..."
+                            class="form-control border-0 shadow-none py-2"
+                        >
+                    </div>
+                </div>
+
+                {{-- Reset Filter --}}
+                <div class="col-lg-1 col-md-3">
+                    <label class="form-label small fw-semibold">
+                        Reset
+                    </label>
+
+                    <button
+                        type="button"
+                        wire:click="resetProperty"
+                        class="btn btn-outline-danger rounded-3 w-100 py-2"
+                        title="Reset semua filter"
+                        aria-label="Reset filter pemasukan"
+                    >
+                        <i class="fa-solid fa-rotate-left"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
     </section>
-    <section class="col-lg-6 col-sm-12">
-        <div class="d-flex gap-2 overflow-x-auto pb-2 hide-scrollbar">
-        <section>
-            <lable for="" class="form-label small fw-semibold">Awal</lable>
-            <div class="input-group border rounded-3">
-                <span class="input-group-text border-0">
-                    <i class="fa-solid fa-calendar-days"></i>
+
+
+    {{-- Informasi Jumlah Data --}}
+    <section class="card border-0 shadow-sm rounded-4 mb-3">
+        <div class="card-body p-3">
+            <div class="d-flex align-items-center justify-content-between
+                        flex-wrap gap-2">
+
+                <div class="d-flex align-items-center gap-3">
+                    <div class="rounded-3 bg-success-subtle text-success
+                                d-flex align-items-center justify-content-center"
+                         style="width: 42px; height: 42px; flex-shrink: 0;">
+                        <i class="fa-solid fa-list-ul"></i>
+                    </div>
+
+                    <div>
+                        <h6 class="fw-bold mb-1">Daftar Pemasukan</h6>
+
+                        <p class="text-secondary small mb-0">
+                            Menampilkan
+                            <span class="fw-semibold text-dark">
+                                {{ $pemasukan->firstItem() ?? 0 }}
+                            </span>
+                            sampai
+                            <span class="fw-semibold text-dark">
+                                {{ $pemasukan->lastItem() ?? 0 }}
+                            </span>
+                            dari
+                            <span class="fw-semibold text-dark">
+                                {{ $pemasukan->total() }}
+                            </span>
+                            data.
+                        </p>
+                    </div>
+                </div>
+
+                <span class="badge rounded-pill bg-success-subtle text-success px-3 py-2">
+                    <i class="fa-solid fa-database me-1"></i>
+                    {{ $pemasukan->total() }} Data
                 </span>
-                <input type="date" wire:model.live.debounce.300ms="tanggal_mulai" class="form-control p-2 border-0">
+
             </div>
-        </section>
-        <section>
-            <lable for="" class="form-label small fw-semibold">Akhir</lable>
-            <div class="input-group border rounded-3">
-                <span class="input-group-text border-0">
-                    <i class="fa-solid fa-calendar-days"></i>
-                </span>
-                <input type="date" wire:model.live.debounce.300ms="tanggal_selesai" class="form-control p-2 border-0">
-            </div>
-        </section>
         </div>
     </section>
 
-    <section class="col-lg-6 col-sm-12">
-        <div class="row g-2 align-items-center">
-        <section class="col-lg-11 col-10">
-        <lable class="form-lable small fw-semibold">Search</lable>
-        <div class="input-group border rounded-3">
-            <span class="input-group-text border-0">
-                <i class="fa-solid fa-magnifying-glass"></i>
-            </span>
-            <input type="search" wire:model.live.debounce.300ms="search" placeholder="Search" class="form-control p-2 border-0">
-        </div>
-        </section>
 
-        <section class="col-lg-1 col-2">
-            <label for="" class="form-label small fw-semibold mb-0">Reset</label>
-            <div class="input-group">
-                 <button wire:click="resetProperty" class="btn border rounded btn-outline-danger w-sm-100"><i class="fa-solid fa-xmark"></i></button>
+    {{-- Tabel Data Pemasukan --}}
+    <section class="card border-0 shadow-sm rounded-4 overflow-hidden income-table-card">
+
+        {{-- Header Tabel --}}
+        <div class="card-header bg-white border-0 px-3 px-lg-4 pt-4 pb-3">
+            <div class="d-flex align-items-center gap-3">
+                <div class="rounded-3 bg-success-subtle text-success
+                            d-flex align-items-center justify-content-center"
+                     style="width: 46px; height: 46px; flex-shrink: 0;">
+                    <i class="fa-solid fa-money-bill-trend-up fs-5"></i>
+                </div>
+
+                <div>
+                    <h5 class="fw-bold mb-1">Riwayat Pemasukan</h5>
+                    <p class="text-secondary small mb-0">
+                        Kelola dan pantau transaksi pemasukanmu.
+                    </p>
+                </div>
             </div>
-        </section>
         </div>
-    </section>
-   </div>
-   </section>
 
-   {{-- Table Data --}}
-   <section class="mt-2">
-    <section class=" border rounded-4 mt-2 p-2 mb-2 row g-2 align-items-center">
-        <section class="col-lg-6 col-sm-12">
-        <p class="mb-0 mt-0 small">Menampilkan: <span class="fw-semibold"> {{ $pemasukan->firstItem() }}</span> sampai <span class="fw-semibold">{{ $pemasukan->lastItem() }}</span> data dari total <span class="fw-semibold">{{ $pemasukan->total() }}</span> data. </p>
-        </section>
-    </section>
+        {{-- Isi Tabel --}}
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0 income-table"
+                   style="min-width: 1050px;">
 
-     <div class="card p-2 shadow-sm rounded-4 pb-0 income-table-card">
-    <div class="table-responsive">
-            <table class="table table-hover income-table">
-              
-                <thead class="pb-2">
-                    <tr class="pb-2">
-                        <th class="col-1 text-center pb-3 bg-head-table  text-success">No</th>
-                        <th class="col-2 text-center pb-3 bg-head-table  text-success">Label</th>
-                        <th class="col-2 text-center pb-3 bg-head-table  text-success">Kategori</th>
-                        <th class="col-2 text-center pb-3 bg-head-table  text-success">Jumlah</th>
-                        <th class="col-2 text-center pb-3 bg-head-table  text-success">Tanggal</th>
-                        <th class="col-2 text-center pb-3 bg-head-table  text-success">Deskripsi</th>
-                        <th class="col-2 text-center pb-3 bg-head-table  text-success">Aksi</th>
+                <thead class="table-light">
+                    <tr>
+                        <th class="text-center text-success small fw-bold py-3 px-3"
+                            style="width: 65px;">
+                            No.
+                        </th>
+
+                        <th class="text-success small fw-bold py-3 px-3"
+                            style="min-width: 180px;">
+                            LABEL
+                        </th>
+
+                        <th class="text-success small fw-bold py-3 px-3"
+                            style="min-width: 150px;">
+                            KATEGORI
+                        </th>
+
+                        <th class="text-success small fw-bold py-3 px-3"
+                            style="min-width: 180px;">
+                            JUMLAH
+                        </th>
+
+                        <th class="text-success small fw-bold py-3 px-3"
+                            style="min-width: 135px;">
+                            TANGGAL
+                        </th>
+
+                        <th class="text-success small fw-bold py-3 px-3"
+                            style="min-width: 210px;">
+                            DESKRIPSI
+                        </th>
+
+                        <th class="text-center text-success small fw-bold py-3 px-3"
+                            style="width: 115px;">
+                            AKSI
+                        </th>
                     </tr>
                 </thead>
-                
+
                 <tbody>
                     @forelse ($pemasukan as $data)
-                    <tr class="pt-2">
-                        <td class="col-1 align-middle text-center pb-3 fw-semibold small">{{($pemasukan->currentPage() - 1) * $pemasukan->perPage() + $loop->iteration}}</td>
-                        <td class="col-2 align-middle text-center pb-3 fw-semibold small">{{$data->label}}</td>
-                        <td class="col-2 align-middle text-center pb-3 fw-light small">{{$data->Kategori->nama_kategori}}</td>
-                        <td class="col-2 align-middle text-center pb-3 fw-semibold small "><span class="badge bg-success shadow">Rp. {{number_format($data->jumlah_pemasukan,0,',','.')}}</span>
-                            <p class="text-center small mt-1 border px-2 py-1 fw-semibold rounded-4 shadow-sm">{{ $data->sumber_pemasukan }}</p>
-                        </td>
-                        <td class="col-2 align-middle text-center pb-3 fw-light small">{{$data->tanggal_pemasukan->format("Y-m-d")}}</td>
-                        <td class="col-2 align-middle text-center pb-3 small fw-light">{{ $data->deskripsi_pemasukan == ''?' - ':$data->deskripsi_pemasukan }}</td>
-                        <td class="col-2 align-middle text-center d-flex align-items-center justify-content-center gap-2 p-5 w-100">
 
-                            <!-- Button trigger modal Hapus-->
-                            <button type="button" class="btn btn-danger small fw-semibold" data-bs-toggle="modal" data-bs-target="#deleteusers{{ $data->id }}"><i class="fa-solid fa-trash"></i>
-                            </button>
-                            
-                            <form action="{{ route('pemasukan.edit',$data->id) }}">
-                            @csrf   
-                            <button type="submit" class="btn btn-info small fw-semibold"><i class="fa-solid fa-pen-to-square"></i></button>
-                            </form>
-                        </td>
-                    </tr>
+                        <tr wire:key="pemasukan-{{ $data->id }}">
+
+                            {{-- Nomor --}}
+                            <td class="text-center px-3 py-3">
+                                <span class="text-secondary small fw-semibold">
+                                    {{ ($pemasukan->currentPage() - 1) * $pemasukan->perPage() + $loop->iteration }}
+                                </span>
+                            </td>
+
+                            {{-- Label --}}
+                            <td class="px-3 py-3">
+                                <div class="fw-semibold text-dark">
+                                    {{ $data->label }}
+                                </div>
+                            </td>
+
+                            {{-- Kategori --}}
+                            <td class="px-3 py-3">
+                                <span class="badge bg-success-subtle text-success
+                                             border border-success-subtle
+                                             rounded-pill px-3 py-2 fw-semibold">
+                                    <i class="fa-solid fa-tag me-1"></i>
+                                    {{ $data->Kategori?->nama_kategori ?? 'Tanpa kategori' }}
+                                </span>
+                            </td>
+
+                            {{-- Jumlah --}}
+                            <td class="px-3 py-3">
+                                <div class="fw-bold text-success">
+                                    Rp{{ number_format(
+                                        (float) $data->jumlah_pemasukan,
+                                        0,
+                                        ',',
+                                        '.'
+                                    ) }}
+                                </div>
+
+                                <div class="text-secondary small mt-1">
+                                    <i class="fa-solid fa-arrow-trend-up me-1"></i>
+                                    {{ $data->sumber_pemasukan ?: 'Sumber tidak diisi' }}
+                                </div>
+                            </td>
+
+                            {{-- Tanggal --}}
+                            <td class="px-3 py-3">
+                                <div class="d-flex align-items-center gap-2 text-secondary small">
+                                    <i class="fa-regular fa-calendar text-success"></i>
+
+                                    <span class="text-nowrap">
+                                        {{ $data->tanggal_pemasukan?->format('d-m-Y') ?? '—' }}
+                                    </span>
+                                </div>
+                            </td>
+
+                            {{-- Deskripsi --}}
+                            <td class="px-3 py-3">
+                                @if ($data->deskripsi_pemasukan)
+                                    <span
+                                        class="d-inline-block text-secondary small text-truncate"
+                                        style="max-width: 190px;"
+                                        title="{{ $data->deskripsi_pemasukan }}"
+                                    >
+                                        {{ $data->deskripsi_pemasukan }}
+                                    </span>
+                                @else
+                                    <span class="text-secondary small fst-italic">
+                                        Tidak ada deskripsi
+                                    </span>
+                                @endif
+                            </td>
+
+                            {{-- Aksi --}}
+                            <td class="px-3 py-3">
+                                <div class="d-flex justify-content-center align-items-center gap-2">
+
+                                    {{-- Edit --}}
+                                    <a
+                                        href="{{ route('pemasukan.edit', $data->id) }}"
+                                        class="btn btn-sm btn-success rounded-3
+                                               d-inline-flex align-items-center justify-content-center"
+                                        style="width: 35px; height: 35px;"
+                                        title="Edit pemasukan"
+                                        aria-label="Edit pemasukan {{ $data->label }}"
+                                    >
+                                        <i class="fa-solid fa-pen-to-square"></i>
+                                    </a>
+
+                                    {{-- Hapus --}}
+                                    <button
+                                        type="button"
+                                        class="btn btn-sm btn-danger rounded-3
+                                               d-inline-flex align-items-center justify-content-center"
+                                        style="width: 35px; height: 35px;"
+                                        data-bs-toggle="modal"
+                                        data-bs-target="#deleteusers{{ $data->id }}"
+                                        title="Hapus pemasukan"
+                                        aria-label="Hapus pemasukan {{ $data->label }}"
+                                    >
+                                        <i class="fa-solid fa-trash-can"></i>
+                                    </button>
+
+                                </div>
+                            </td>
+
+                        </tr>
+
                     @empty
-                    <tr>
-                        <td colspan="7" class="text-center fw-semibold p-4 pt-5 pb-5">Data Pemasukan Masih Kosong!</td>
-                    </tr>
+
+                        {{-- Tampilan Data Kosong --}}
+                        <tr>
+                            <td colspan="7" class="text-center py-5 px-3">
+
+                                <div class="d-flex flex-column align-items-center">
+
+                                    <div class="rounded-circle bg-success-subtle text-success
+                                                d-flex align-items-center justify-content-center mb-3"
+                                         style="width: 70px; height: 70px;">
+                                        <i class="fa-solid fa-folder-open fa-2x"></i>
+                                    </div>
+
+                                    <h6 class="fw-bold mb-2">
+                                        {{ $pemasukan->total() > 0
+                                            ? 'Data Tidak Ditemukan'
+                                            : 'Belum Ada Data Pemasukan' }}
+                                    </h6>
+
+                                    <p class="text-secondary small mb-0">
+                                        {{ $pemasukan->total() > 0
+                                            ? 'Coba ubah kata kunci pencarian atau rentang tanggal.'
+                                            : 'Data pemasukan yang kamu tambahkan akan ditampilkan di sini.' }}
+                                    </p>
+
+                                </div>
+
+                            </td>
+                        </tr>
+
                     @endforelse
-                    
                 </tbody>
+
             </table>
         </div>
-        {{--  --}}
-        <div class="card-footer d-flex align-items-center mt-3 pt-3">
-            <div class="d-flex justify-content-between flex-column flex-md-row align-items-center gap-2">
+
+        {{-- Pagination --}}
+        <div class="card-footer bg-white border-top px-3 px-lg-4 py-3">
+            <div class="d-flex justify-content-center justify-content-md-end">
                 {{ $pemasukan->links() }}
             </div>
         </div>
-    </div>
-   </section>
-   {{-- Modal Hapus --}}
-   @include('pemasukan.partials.modalhapus')
+
+    </section>
+
+    {{-- Modal Hapus --}}
+    @include('pemasukan.partials.modalhapus')
+
 </div>

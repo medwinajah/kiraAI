@@ -768,3 +768,529 @@
 }
 
 
+
+/* =====================================================
+   IMPORT EXCEL TRANSAKSI KIRAAI
+===================================================== */
+
+.income-page .income-import-card,
+.income-page .income-import-preview {
+    --import-green: #198754;
+    --import-green-dark: #116342;
+    --import-text: #20352c;
+    --import-muted: #718078;
+    --import-border: #e2eee6;
+
+    min-width: 0;
+    padding: clamp(20px, 3vw, 30px);
+    background: #ffffff;
+    border: 1px solid var(--import-border);
+    border-radius: 22px;
+    box-shadow: 0 8px 25px rgba(30, 57, 40, 0.04);
+}
+
+.income-import-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 24px;
+}
+
+.income-import-icon {
+    display: flex;
+    flex: 0 0 50px;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: #198754;
+    background: #eaf7ef;
+    border: 1px solid #d9eddf;
+    border-radius: 15px;
+    font-size: 21px;
+}
+
+.income-import-heading {
+    min-width: 0;
+}
+
+.income-import-eyebrow {
+    display: block;
+    margin-bottom: 6px;
+    color: #198754;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.income-import-heading h2,
+.income-import-preview-header h2 {
+    margin: 0 0 7px;
+    color: #20352c;
+    font-size: clamp(18px, 2vw, 22px);
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.income-import-heading p,
+.income-import-preview-header p {
+    margin: 0;
+    color: #718078;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.income-import-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 235px;
+    padding: 25px;
+    text-align: center;
+    background: #f8fcf9;
+    border: 2px dashed #bedbc7;
+    border-radius: 17px;
+    cursor: pointer;
+    transition:
+        border-color 0.2s ease,
+        background-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.income-import-dropzone:hover,
+.income-import-dropzone.is-dragging {
+    background: #eff9f2;
+    border-color: #198754;
+}
+
+.income-import-dropzone.is-dragging {
+    transform: scale(1.005);
+}
+
+.income-import-dropzone.is-file-selected {
+    background: #f1faf4;
+    border-color: #198754;
+}
+
+.income-import-input {
+    display: none;
+}
+
+.income-import-upload-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+    color: #198754;
+    background: #e7f6ec;
+    border: 1px solid #d8edde;
+    border-radius: 19px;
+    font-size: 25px;
+}
+
+.income-import-dropzone > strong {
+    color: #263c2e;
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.income-import-description {
+    margin-top: 7px;
+    color: #718078;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.income-import-formats {
+    margin-top: 12px;
+    color: #849188;
+    font-size: 11px;
+}
+
+.income-import-filename {
+    max-width: 100%;
+    margin-top: 16px;
+    padding: 8px 13px;
+    overflow-wrap: anywhere;
+    color: #176b49;
+    background: #eaf7ef;
+    border-radius: 9px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.income-import-validation {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 10px;
+    color: #b42332;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.income-import-validation i {
+    margin-top: 3px;
+}
+
+.income-import-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+.income-import-template,
+.income-import-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 44px;
+    padding: 11px 16px;
+    border-radius: 11px;
+    font-size: 12px;
+    font-weight: 750;
+    text-decoration: none;
+    transition: 0.2s ease;
+}
+
+.income-import-template {
+    color: #176b49;
+    background: #ffffff;
+    border: 1px solid #cfe4d5;
+}
+
+.income-import-template:hover {
+    color: #ffffff;
+    background: #176b49;
+    border-color: #176b49;
+}
+
+.income-import-submit {
+    color: #ffffff;
+    background: linear-gradient(135deg, #198754, #116b49);
+    border: 1px solid #198754;
+    cursor: pointer;
+}
+
+.income-import-submit:hover {
+    background: #116342;
+    border-color: #116342;
+    box-shadow: 0 5px 13px rgba(25, 135, 84, 0.16);
+    transform: translateY(-1px);
+}
+
+.income-import-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 18px;
+    padding: 13px 15px;
+    color: #617467;
+    background: #f6faf7;
+    border: 1px solid #e8f1e9;
+    border-radius: 11px;
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.income-import-note i {
+    margin-top: 3px;
+    color: #198754;
+}
+
+/* Preview */
+
+.income-page .income-import-preview {
+    padding: 0;
+    overflow: hidden;
+}
+
+.income-import-preview-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 24px;
+    border-bottom: 1px solid #e8eee9;
+}
+
+.income-import-preview-count {
+    flex: 0 0 auto;
+    padding: 8px 12px;
+    color: #176b49;
+    background: #eaf7ef;
+    border: 1px solid #d9eddf;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.income-import-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 17px 24px;
+    background: #fbfdfb;
+    border-bottom: 1px solid #e8eee9;
+}
+
+.income-import-summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    min-width: 130px;
+    padding: 12px 15px;
+    background: #ffffff;
+    border: 1px solid #e6ede8;
+    border-radius: 11px;
+}
+
+.income-import-summary-item span {
+    color: #718078;
+    font-size: 11px;
+}
+
+.income-import-summary-item strong {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.income-import-table-wrap {
+    width: 100%;
+}
+
+.income-import-table {
+    min-width: 850px;
+    font-size: 12px;
+}
+
+.income-import-table thead th {
+    padding: 13px 15px;
+    color: #627369;
+    background: #f5f9f6;
+    border-bottom: 1px solid #e4ece6;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.income-import-table tbody td {
+    padding: 14px 15px;
+    border-color: #edf2ee;
+    vertical-align: top;
+}
+
+.income-import-table tbody tr:hover {
+    background: #f8fcf9;
+}
+
+.income-import-type {
+    display: inline-block;
+    padding: 5px 8px;
+    color: #176b49;
+    background: #eaf7ef;
+    border-radius: 7px;
+    font-size: 10px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.income-import-row-description {
+    display: block;
+    margin-top: 4px;
+    color: #849188;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.income-import-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.income-import-status--valid {
+    color: #198754;
+}
+
+.income-import-status--invalid {
+    color: #c52f40;
+}
+
+.income-import-row-errors {
+    min-width: 180px;
+    margin: 8px 0 0;
+    padding-left: 15px;
+    color: #b42332;
+    font-size: 10px;
+    line-height: 1.65;
+}
+
+.income-import-confirm-area {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 24px;
+    background: #fbfdfb;
+    border-top: 1px solid #e8eee9;
+}
+
+.income-import-confirm-area form {
+    margin: 0;
+}
+
+.income-import-confirm-help,
+.income-import-confirm-warning {
+    flex: 1 1 260px;
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.income-import-confirm-help {
+    color: #617467;
+}
+
+.income-import-confirm-warning {
+    color: #b42332;
+}
+
+.income-import-confirm-warning i {
+    margin-right: 5px;
+}
+
+@media (max-width: 575.98px) {
+    .income-page .income-import-card {
+        padding: 17px;
+        border-radius: 17px;
+    }
+
+    .income-import-header {
+        gap: 11px;
+    }
+
+    .income-import-icon {
+        flex-basis: 43px;
+        width: 43px;
+        height: 43px;
+        font-size: 18px;
+    }
+
+    .income-import-dropzone {
+        min-height: 210px;
+        padding: 19px 12px;
+    }
+
+    .income-import-dropzone > strong {
+        font-size: 13px;
+    }
+
+    .income-import-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .income-import-template,
+    .income-import-submit {
+        width: 100%;
+    }
+
+    .income-import-preview-header {
+        padding: 18px;
+    }
+
+    .income-import-summary {
+        padding: 14px 18px;
+    }
+
+    .income-import-confirm-area {
+        padding: 18px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .income-import-dropzone,
+    .income-import-template,
+    .income-import-submit {
+        transition: none;
+    }
+}
+/* Aksi pada header preview import */
+.income-import-preview-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.income-import-preview-header-actions form {
+    margin: 0;
+}
+
+/* Tombol silang untuk membatalkan preview */
+.income-import-preview-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 38px;
+    height: 38px;
+    padding: 0;
+
+    border: 1px solid #f1b9bf;
+    border-radius: 12px;
+
+    background: #fff;
+    color: #dc3545;
+
+    font-size: 18px;
+    cursor: pointer;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.income-import-preview-close:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.income-import-preview-close:focus-visible {
+    outline: 3px solid rgba(220, 53, 69, 0.2);
+    outline-offset: 2px;
+}
+
+@media (max-width: 576px) {
+    .income-import-preview-header-actions {
+        gap: 6px;
+    }
+
+    .income-import-preview-count {
+        white-space: nowrap;
+        font-size: 12px;
+    }
+
+    .income-import-preview-close {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+    }
+}

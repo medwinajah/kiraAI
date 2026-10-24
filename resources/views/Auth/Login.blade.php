@@ -32,7 +32,7 @@
 
                 <span>
                     <strong>kira<span>AI</span></strong>
-                    <small>PERSONAL FINANCE</small>
+                    <small>SMART FINANCE</small>
                 </span>
             </a>
 

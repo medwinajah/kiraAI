@@ -1,123 +1,276 @@
 @extends('Layouts.app')
-@section('title', 'Pemasukan')
+
+@section('title', 'Tambah Pemasukan')
+
 @section('link_css')
-    @vite(['resources/css/MenuList/pemasukan.css'])
-    @vite(['resources/css/MenuList/pemasukanTambah.css'])
+    @vite([
+        'resources/css/MenuList/pemasukan.css',
+        'resources/css/MenuList/pemasukanTambah.css',
+    ])
 @endsection
 
 @section('content')
-  
-    <div class="container row rounded-3 mt-1 py-3 align-items-center w-100 m-auto">
-        <section class="col-lg-8 col-12 border mx-lg-auto py-3 rounded-4 shadow">
-            <section class="border-bottom mb-3">
-                <a href="{{ route('pemasukan.index') }}" wire:navigate class="text-decoration-none">
-                <button class="btn btn-outline-secondary small fw-semibold rounded-4 mb-3"><i class="fa-solid fa-backward"></i> Kembali</button></a>
-            </section>
-            <h4 class="text-center fw-bold py-3 bg-tambah shadow-sm border rounded-4 text-white mb-4">Tambah Catatan Pemasukan</h4>
 
-            <div class="px-2">
-                <form action="{{route('pandapatan.store') }}" method="POST">
-                    @csrf
-                    <div class="row g-2">
-                        {{-- Label Pemasukan --}}
-                    <section class="mb-1 col-lg-12 col-sm-12">
-                        <label for="label_pemasukan" class="form-label small fw-semibold">Label Pemasukan <sup class="text-danger fs-6">*</sup></label>
-                        <div class=" border @error('label')
-                            border-danger
-                        @enderror rounded-3 p-0 d-flex align-items-center">
-                        <span class="border-0 d-flex gap-2 p-2">
-                             <i class="fa-solid fa-bookmark"></i>         
-                        </span>
-                        <input type="text" class="form-control p-2 border-0 w-100 focus-ring focus-ring-light"  value="{{old("label") }}" name="label" placeholder="Label Pemasukan" id="label_pemasukan">
+<div class="income-create-page container-fluid py-3">
+    <div class="row justify-content-center">
+        <div class="col-12 col-xl-9 col-xxl-8">
 
-                        </div>
-                        @error('label')
-                            <span class="small text-danger">{{$message}}</span>
-                        @enderror
-                    </section>
+            <section class="income-create-card">
 
-                     {{-- Kategori Pemasukan --}}
-                    <section class="mb-1 col-lg-6 col-sm-12">
-                        <label for="kategori_pemasukan" class="form-label small fw-semibold">Kategori Pemasukan <sup class="text-danger fs-6">*</sup></label>
-                        <div class="border rounded-3 p-0 d-flex gap-2 @error('kategori')
-                            border-danger
-                        @enderror">
-                        <span class="border-0 d-flex align-items-center p-2 ">
-                             <i class="fa-solid fa-bookmark"></i>
-                        </span>
-                        <select name="kategori" id="kategori" class="form-select w-100 p-2 border-0">
-                                <option value="" class="form-select">Pilih Kategori</option>
-                                @forelse ($kategori_pemasukan as $kategori)
-                                <option value="{{ $kategori->id }}" {{ old('kategori') == $kategori->id?'selected':'' }}>{{$kategori->nama_kategori}}</option>
-                                @empty
-                                <option value="">$Kategori Masih Kosong</option>
-                                @endforelse
-                           </select>
-                        </div>
-                         @error('kategori')
-                            <span class="small text-danger">{{$message}}</span>
-                        @enderror
-                    </section>
+                {{-- Navigasi --}}
+                <div class="income-create-navigation">
+                    <a
+                        href="{{ route('pemasukan.index') }}"
+                        wire:navigate
+                        class="income-back-link"
+                    >
+                        <i class="fa-solid fa-arrow-left me-2"></i>
+                        Kembali ke Pemasukan
+                    </a>
 
-                     {{-- Jumlah Pemasukan --}}
-                    @livewire('pemasukan.partials.formnumberlive')
+                    <span class="income-page-label">
+                        <i class="fa-solid fa-wallet me-1"></i>
+                        Keuangan
+                    </span>
+                </div>
 
-                     {{-- Sumber Pemasukan --}}
-                    <section class="mb-1 col-lg-6 col-sm-12">
-                        <label for="sumber_pemasukan" class="form-label small fw-semibold">Sumber Pemasukan </label>
-                        <div class=" border @error('sumber_pemasukan')
-                            border-danger
-                        @enderror rounded-3 p-0 d-flex align-items-center">
-                        <span class="border-0 d-flex gap-2 p-2">
-                             <i class="fa-solid fa-bookmark"></i>         
-                        </span>
-                        <input type="text" class="form-control p-2 border-0 w-100 focus-ring focus-ring-light" name="sumber_pemasukan" placeholder="Contoh: Orang tua" id="sumber_pemasukan">
-                        </div>
-                        @error('sumber_pemasukan')
-                            <span class="small text-danger">{{$message}}</span>
-                        @enderror
-                    </section>
-
-                    {{-- Tanggal Pemasukan --}}
-                    <section class="mb-1 col-lg-6 col-sm-12">
-                        <label for="tanggal_pemasukan" class="form-label small fw-semibold">Tanggal Pemasukan <sup class="text-danger fs-6">*</sup></label>
-                        <div class=" border @error('tanggal_pemasukan')
-                            border-danger
-                        @enderror rounded-3 p-0 d-flex align-items-center">
-                        <span class="border-0 d-flex gap-2 p-2">
-                             <i class="fa-solid fa-bookmark"></i>         
-                        </span>
-                        <input type="date" name="tanggal_pemasukan" class="form-control p-2 border-0 w-100 focus-ring focus-ring-light"  id="tanggal_pemasukan">
-                        </div>
-                         @error('tanggal_pemasukan')
-                            <span class="small text-danger">{{$message}}</span>
-                        @enderror
-                    </section>
-
-                    {{-- Deskripsi Pemasukan --}}
-                    <section class="mb-1 col-lg-12 col-sm-12">
-                        <label for="deskripsi_pemasukan" class="form-label small fw-semibold">Deskripsi Pemasukan</label>
-                        <div class=" border @error('deskripsi_pemasukan')
-                            border-danger
-                        @enderror rounded-3 p-0 d-flex align-items-center">
-                        <textarea name="deskripsi_pemasukan" id="" cols="30" rows="2" placeholder="Catat deskripsi pemasukan" class="form-control"></textarea>
-                        </div>
-                        @error('deskripsi_pemasukan')
-                            <span class="small text-danger">{{$message}}</span>
-                        @enderror
-                    </section>
-
-                    {{-- Button Aksi --}}
-                    <section class="mb-1 col-lg-12 col-sm-12 mt-3">
-                        <div class="d-flex justify-content-between align-items-center gap-2"> 
-                            <button class="btn btn-outline-danger rounded w-50 py-2 rounded-4 fw-semibold" type="reset"> <i class="fa-solid fa-rotate-left"></i> Batal</button>
-                             <button type="submit" class="btn btn-tambah rounded w-50 py-2 rounded-4 fw-semibold text-white" type="reset"> Tambah <i class="fa-solid fa-plus-circle fs-5"></i> </button>
-                        </div>
-                    </section>
+                {{-- Judul --}}
+                <header class="income-create-heading">
+                    <div class="income-heading-icon">
+                        <i class="fa-solid fa-circle-plus"></i>
                     </div>
+
+                    <div>
+                        <h1>Tambah Pemasukan</h1>
+                        <p>
+                            Catat uang masuk untuk membantu menjaga
+                            pencatatan keuangan tetap teratur.
+                        </p>
+                    </div>
+                </header>
+
+                {{-- Pesan Validasi --}}
+                @if ($errors->any())
+                    <div class="alert alert-danger income-form-alert" role="alert">
+                        <div class="fw-semibold mb-1">
+                            Ada data yang perlu diperiksa.
+                        </div>
+
+                        <p class="small mb-0">
+                            Periksa kembali kolom yang ditandai sebelum menyimpan.
+                        </p>
+                    </div>
+                @endif
+
+                {{-- Form --}}
+                <form
+                    action="{{route('pandapatan.store')}}"
+                    method="POST"
+                >
+                    @csrf
+
+                    <div class="income-form-section">
+                        <h2 class="income-section-title">
+                            Informasi Pemasukan
+                        </h2>
+
+                        <p class="income-section-description">
+                            Isi informasi transaksi sesuai dengan pemasukan yang diterima.
+                        </p>
+
+                        <div class="row g-3">
+
+                            {{-- Label Pemasukan --}}
+                            <div class="col-12">
+                                <label for="label_pemasukan" class="income-form-label">
+                                    Label Pemasukan
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <div class="input-group income-input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-regular fa-bookmark"></i>
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        name="label"
+                                        id="label_pemasukan"
+                                        class="form-control @error('label') is-invalid @enderror"
+                                        value="{{ old('label') }}"
+                                        placeholder="Contoh: Penjualan harian"
+                                        maxlength="255"
+                                        required
+                                    >
+                                </div>
+
+                                @error('label')
+                                    <div class="income-error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            {{-- Kategori --}}
+                            <div class="col-12 col-md-6">
+                                <label for="kategori" class="income-form-label">
+                                    Kategori Pemasukan
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <div class="input-group income-input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-tags"></i>
+                                    </span>
+
+                                    <select
+                                        name="kategori"
+                                        id="kategori"
+                                        class="form-select @error('kategori') is-invalid @enderror"
+                                        required
+                                    >
+                                        <option value="">Pilih kategori</option>
+
+                                        @forelse ($kategori_pemasukan as $kategori)
+                                            <option
+                                                value="{{ $kategori->id }}"
+                                                @selected(old('kategori') == $kategori->id)
+                                            >
+                                                {{ $kategori->nama_kategori }}
+                                            </option>
+                                        @empty
+                                            <option value="" disabled>
+                                                Belum ada kategori pemasukan
+                                            </option>
+                                        @endforelse
+                                    </select>
+                                </div>
+
+                                @error('kategori')
+                                    <div class="income-error-message">{{ $message }}</div>
+                                @enderror
+
+                                @if ($kategori_pemasukan->isEmpty())
+                                    <small class="income-field-help">
+                                        Tambahkan kategori pemasukan terlebih dahulu
+                                        sebelum mencatat transaksi.
+                                    </small>
+                                @endif
+                            </div>
+
+                            {{-- Jumlah Pemasukan --}}
+                            {{-- Komponen ini tetap menggunakan logika Livewire yang ada --}}
+                            @livewire('pemasukan.partials.formnumberlive')
+
+                            {{-- Sumber Pemasukan --}}
+                            <div class="col-12 col-md-6">
+                                <label for="sumber_pemasukan" class="income-form-label">
+                                    Sumber Pemasukan
+                                </label>
+
+                                <div class="input-group income-input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-solid fa-arrow-trend-up"></i>
+                                    </span>
+
+                                    <input
+                                        type="text"
+                                        name="sumber_pemasukan"
+                                        id="sumber_pemasukan"
+                                        class="form-control @error('sumber_pemasukan') is-invalid @enderror"
+                                        value="{{ old('sumber_pemasukan') }}"
+                                        placeholder="Contoh: Penjualan atau pelanggan"
+                                        maxlength="255"
+                                    >
+                                </div>
+
+                                @error('sumber_pemasukan')
+                                    <div class="income-error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            {{-- Tanggal Pemasukan --}}
+                            <div class="col-12 col-md-6">
+                                <label for="tanggal_pemasukan" class="income-form-label">
+                                    Tanggal Pemasukan
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <div class="input-group income-input-group">
+                                    <span class="input-group-text">
+                                        <i class="fa-regular fa-calendar"></i>
+                                    </span>
+
+                                    <input
+                                        type="date"
+                                        name="tanggal_pemasukan"
+                                        id="tanggal_pemasukan"
+                                        class="form-control @error('tanggal_pemasukan') is-invalid @enderror"
+                                        value="{{ old('tanggal_pemasukan') }}"
+                                        required
+                                    >
+                                </div>
+
+                                @error('tanggal_pemasukan')
+                                    <div class="income-error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            {{-- Deskripsi --}}
+                            <div class="col-12">
+                                <label for="deskripsi_pemasukan" class="income-form-label">
+                                    Deskripsi
+                                    <span class="text-secondary fw-normal">(Opsional)</span>
+                                </label>
+
+                                <textarea
+                                    name="deskripsi_pemasukan"
+                                    id="deskripsi_pemasukan"
+                                    rows="3"
+                                    maxlength="2000"
+                                    class="form-control income-textarea @error('deskripsi_pemasukan') is-invalid @enderror"
+                                    placeholder="Tambahkan keterangan jika diperlukan..."
+                                >{{ old('deskripsi_pemasukan') }}</textarea>
+
+                                @error('deskripsi_pemasukan')
+                                    <div class="income-error-message">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                        </div>
+                    </div>
+
+                    {{-- Footer Form --}}
+                    <div class="income-form-footer">
+                        <p class="income-form-note">
+                            <span class="text-danger">*</span>
+                            Wajib diisi
+                        </p>
+
+                        <div class="d-flex flex-wrap gap-2">
+                            <a
+                                href="{{ route('pemasukan.index') }}"
+                                wire:navigate
+                                class="btn income-btn-cancel"
+                            >
+                                Batal
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn income-btn-submit"
+                                @disabled($kategori_pemasukan->isEmpty())
+                            >
+                                <i class="fa-solid fa-floppy-disk me-2"></i>
+                                Simpan Pemasukan
+                            </button>
+                        </div>
+                    </div>
+
                 </form>
-            </div>
-        </section>
+
+            </section>
+
+        </div>
     </div>
-    
+</div>
+
 @endsection

@@ -126,7 +126,7 @@
 
              <p class="text-center text-muted mb-0 mt-2" style="font-size: 11px;">
                  <i class="fa-solid fa-sparkles me-1"></i>
-                 Asisten Keuangan UANGKU
+                 Asisten Keuangan KiraAI
              </p>
 
          </footer>

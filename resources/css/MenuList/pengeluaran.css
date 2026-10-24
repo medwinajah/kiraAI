@@ -165,3 +165,456 @@ label {
     background-color: #fbfefb;
     border-top-color: #e2eee6;
 }
+
+/* =========================================
+   IMPORT EXCEL PENGELUARAN
+========================================= */
+
+.expense-import-card,
+.expense-import-preview {
+    padding: 24px;
+    background: linear-gradient(145deg, #ffffff, #f8fcf9);
+    border: 1px solid #dfeee4;
+    border-radius: 22px;
+    box-shadow: 0 8px 25px rgba(25, 135, 84, 0.06);
+}
+
+.expense-import-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 22px;
+}
+
+.expense-import-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex-shrink: 0;
+    color: #198754;
+    background: #e7f5ec;
+    border-radius: 14px;
+    font-size: 22px;
+}
+
+.expense-import-eyebrow {
+    display: inline-block;
+    margin-bottom: 7px;
+    color: #198754;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1px;
+}
+
+.expense-import-header h4,
+.expense-preview-heading h4 {
+    margin-bottom: 8px;
+    color: #25382d;
+    font-weight: 750;
+    font-size: 21px;
+}
+
+.expense-import-header p,
+.expense-preview-heading p {
+    margin-bottom: 0;
+    color: #718078;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+.expense-import-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.expense-import-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 18px;
+    border: 2px dashed #b8d9c3;
+    border-radius: 18px;
+    background: #fbfefc;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color .2s ease, border-color .2s ease;
+}
+
+.expense-import-dropzone:hover,
+.expense-import-dropzone.is-dragging {
+    background: #edf8f0;
+    border-color: #198754;
+}
+
+.expense-import-input {
+    display: none;
+}
+
+.expense-import-upload-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 16px;
+    background: #e5f5e9;
+    color: #198754;
+    font-size: 25px;
+}
+
+.expense-import-dropzone > strong {
+    color: #25382d;
+    font-size: 15px;
+}
+
+.expense-import-description,
+.expense-import-formats {
+    color: #718078;
+    font-size: 12px;
+}
+
+.expense-import-formats {
+    padding: 6px 10px;
+    border-radius: 20px;
+    background: #edf7f0;
+    color: #198754;
+    font-weight: 650;
+}
+
+.expense-import-filename {
+    max-width: 100%;
+    color: #176b49;
+    font-size: 12px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+.expense-import-validation {
+    color: #dc3545;
+    font-size: 13px;
+}
+
+.expense-import-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.expense-import-template,
+.expense-import-submit {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    min-height: 44px;
+    padding: 11px 16px;
+    border: 1px solid transparent;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.expense-import-template {
+    color: #198754;
+    background: #ffffff;
+    border-color: #cfe4d5;
+}
+
+.expense-import-template:hover {
+    color: #116342;
+    background: #edf8f0;
+    border-color: #198754;
+}
+
+.expense-import-submit {
+    color: #ffffff;
+    background: linear-gradient(135deg, #198754, #116342);
+    cursor: pointer;
+}
+
+.expense-import-submit:hover {
+    color: #ffffff;
+    background: #116342;
+    transform: translateY(-1px);
+    box-shadow: 0 5px 14px rgba(25, 135, 84, .17);
+}
+
+.expense-import-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 19px;
+    padding: 13px 15px;
+    border-radius: 12px;
+    background: #edf7f0;
+    color: #496553;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.expense-import-note > i {
+    margin-top: 3px;
+    color: #198754;
+}
+
+/* =========================================
+   HEADER DAN TOMBOL SILANG PREVIEW
+========================================= */
+
+.expense-preview-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.expense-preview-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.expense-preview-header-actions form {
+    margin: 0;
+}
+
+.expense-preview-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: #e7f5ec;
+    color: #198754;
+    font-size: 12px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.expense-preview-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    padding: 0;
+    border: 1px solid #f1b9bf;
+    border-radius: 12px;
+    background: #ffffff;
+    color: #dc3545;
+    font-size: 18px;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.expense-preview-close:hover {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: #ffffff;
+}
+
+/* =========================================
+   RINGKASAN VALIDASI
+========================================= */
+
+.expense-import-summary {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.expense-import-summary-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 15px;
+    border: 1px solid #e2eee6;
+    border-radius: 13px;
+    background: #ffffff;
+}
+
+.expense-import-summary-item span {
+    color: #718078;
+    font-size: 12px;
+}
+
+.expense-import-summary-item strong {
+    font-size: 23px;
+}
+
+/* =========================================
+   TABEL PREVIEW
+========================================= */
+
+.expense-preview-table-wrap {
+    border: 1px solid #e2eee6;
+    border-radius: 14px;
+    background: #ffffff;
+}
+
+.expense-preview-table {
+    min-width: 850px;
+}
+
+.expense-preview-table thead th {
+    padding: 14px 13px;
+    background: #176b49;
+    color: #ffffff;
+    border: 0;
+    font-size: 11px;
+    letter-spacing: .4px;
+    white-space: nowrap;
+}
+
+.expense-preview-table tbody td {
+    padding: 14px 13px;
+    border-color: #edf2ee;
+    color: #405247;
+    font-size: 12px;
+    vertical-align: top;
+}
+
+.expense-preview-table tbody tr:hover td {
+    background: #f5fbf6;
+}
+
+.expense-preview-description {
+    display: block;
+    max-width: 220px;
+    margin-top: 5px;
+    color: #718078;
+    overflow-wrap: anywhere;
+}
+
+.expense-import-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 6px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 750;
+    white-space: nowrap;
+}
+
+.expense-import-status--valid {
+    background: #e7f5ec;
+    color: #198754;
+}
+
+.expense-import-status--invalid {
+    background: #fff0f0;
+    color: #dc3545;
+}
+
+.expense-preview-errors {
+    min-width: 170px;
+    max-width: 250px;
+    margin: 8px 0 0;
+    padding-left: 16px;
+    color: #dc3545;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.expense-import-confirm-area {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.expense-import-confirm-area form {
+    margin: 0;
+}
+
+.expense-import-confirm-help,
+.expense-import-confirm-warning {
+    margin: 0;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+.expense-import-confirm-help {
+    color: #496553;
+}
+
+.expense-import-confirm-warning {
+    color: #dc3545;
+}
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 575.98px) {
+    .expense-import-card,
+    .expense-import-preview {
+        padding: 17px;
+        border-radius: 17px;
+    }
+
+    .expense-import-header h4,
+    .expense-preview-heading h4 {
+        font-size: 18px;
+    }
+
+    .expense-import-actions {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .expense-import-template,
+    .expense-import-actions .expense-import-submit {
+        width: 100%;
+    }
+
+    .expense-preview-header {
+        gap: 10px;
+    }
+
+    .expense-preview-header-actions {
+        gap: 6px;
+    }
+
+    .expense-preview-count {
+        padding: 7px 9px;
+        font-size: 11px;
+    }
+
+    .expense-preview-close {
+        width: 34px;
+        height: 34px;
+    }
+
+    .expense-import-summary-item {
+        padding: 12px;
+    }
+
+    .expense-import-summary-item span {
+        font-size: 11px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .expense-import-dropzone,
+    .expense-import-template,
+    .expense-import-submit,
+    .expense-preview-close {
+        transition: none;
+    }
+}
+

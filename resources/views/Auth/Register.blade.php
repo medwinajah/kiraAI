@@ -68,7 +68,11 @@
                     <span class="auth-feature-icon">
                         <i class="fa-solid fa-piggy-bank"></i>
                     </span>
-
+                    
+                    <div>
+                        <strong>Bantuan AI</strong>
+                        <small>Tanya AI mengenai keuangan mu.</small>
+                    </div>
                    
                 </div>
 

@@ -66,6 +66,27 @@ Route::post('pemasukan/store',[PemasukanController::class,'store'])->name('panda
 Route::get('pemasukan/edit/{id}',[PemasukanController::class,'edit'])->name('pemasukan.edit');
 Route::put('pemasukan/update/{id}',[PemasukanController::class,'update'])->name('pemasukan.update');
 
+Route::post(
+    '/pemasukan/import/preview',
+    [PemasukanController::class, 'previewImport']
+)->name('pemasukan.import.preview');
+
+Route::post(
+    '/pemasukan/import/confirm',
+    [PemasukanController::class, 'confirmImport']
+)->name('pemasukan.import.confirm');
+
+Route::get(
+    '/pemasukan/import/template',
+    [PemasukanController::class, 'downloadTemplate']
+)->name('pemasukan.import.template');
+
+// Batalkan dan hapus preview import pemasukan.
+Route::post(
+    '/pemasukan/import/preview/cancel',
+    [PemasukanController::class, 'cancelImportPreview']
+)->name('pemasukan.import.cancel');
+
 // =========================================================================================
 // ==========================================================================================
 // ROUTE LIST PENGELUARAN
@@ -76,6 +97,29 @@ Route::post('pengeluaran/store',[PengeluaranController::class,'store'])->name('p
 Route::get('pengeluaran/edit/{id}',[PengeluaranController::class,'edit'])->name('pengeluaran.edit');
 Route::put('pengeluaran/update/{id}',[PengeluaranController::class,'update'])->name('pengeluaran.update');
 
+// Template Excel pengeluaran.
+Route::get(
+    '/pengeluaran/import/template',
+    [PengeluaranController::class, 'downloadImportTemplate']
+)->name('pengeluaran.import.template');
+
+// Membaca dan memvalidasi file Excel.
+Route::post(
+    '/pengeluaran/import/preview',
+    [PengeluaranController::class, 'previewImport']
+)->name('pengeluaran.import.preview');
+
+// Menyimpan transaksi yang sudah valid.
+Route::post(
+    '/pengeluaran/import/confirm',
+    [PengeluaranController::class, 'confirmImport']
+)->name('pengeluaran.import.confirm');
+
+// Membatalkan preview dan menghapus data sementara.
+Route::post(
+    '/pengeluaran/import/cancel',
+    [PengeluaranController::class, 'cancelImportPreview']
+)->name('pengeluaran.import.cancel');
 
 
 // ROUTE KATEGORI PEMASUKAN
