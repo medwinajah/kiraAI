@@ -290,7 +290,6 @@ Ketentuan keamanan yang diterapkan:
 - File unggahan dibatasi berdasarkan jenis dan ukuran.
 
 Jika `.env` atau kunci API tidak sengaja terekspos, segera ganti kunci tersebut melalui penyedia layanan yang digunakan.
-
 ## Lisensi
 
 MIT, sesuai deklarasi pada `composer.json`. 

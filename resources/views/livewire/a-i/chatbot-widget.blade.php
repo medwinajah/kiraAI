@@ -1,135 +1,214 @@
- <div>
-     {{-- TOMBOL FLOATING CHATBOT --}}
-     <section class="position-fixed bottom-0 end-0 m-4" style="z-index: 1050;">
+<div class="kira-chatbot">
 
-         <button type="button" wire:click="toggleChat"
-             class="chatbot-launcher btn d-flex align-items-center gap-2 rounded-pill px-4 py-3 shadow-lg text-white border-0">
+    {{-- TOMBOL FLOATING CHATBOT --}}
+    <section class="chatbot-launcher-wrap position-fixed bottom-0 end-0 m-3 m-md-4">
+        <button
+            type="button"
+            wire:click="toggleChat"
+            class="chatbot-launcher btn d-flex align-items-center gap-3 rounded-pill border-0"
+            aria-label="Buka asisten KiraAI"
+            aria-controls="kira-chatbot-panel"
+            aria-expanded="{{ $OpenFalse ? 'true' : 'false' }}"
+        >
+            <span class="chatbot-launcher-icon">
+                <i class="fa-solid fa-robot"></i>
+            </span>
 
-             <i class="fa-solid fa-robot fs-5"></i>
-             <span class="fw-semibold">Tanya AI</span>
-             <i class="fa-solid fa-sparkles small"></i>
+            <span class="d-flex flex-column text-start">
+                <span class="chatbot-launcher-title">Tanya KiraAI</span>
+                <span class="chatbot-launcher-subtitle">Asisten keuanganmu</span>
+            </span>
 
-         </button>
-     </section>
+            <span class="chatbot-launcher-sparkle">
+                <i class="fa-solid fa-sparkles"></i>
+            </span>
+        </button>
+    </section>
 
-     {{-- PANEL CHAT --}}
-     <section class="chatbot-panel {{ $OpenFalse ? 'is-open' : '' }}" aria-hidden="{{ $OpenFalse ? 'false' : 'true' }}">
+    {{-- PANEL CHAT --}}
+    <section
+        id="kira-chatbot-panel"
+        class="chatbot-panel {{ $OpenFalse ? 'is-open' : '' }}"
+        aria-hidden="{{ $OpenFalse ? 'false' : 'true' }}"
+        aria-label="Chat dengan asisten KiraAI"
+        role="dialog"
+    >
 
-         {{-- HEADER --}}
-         <header class="chatbot-header d-flex align-items-center justify-content-between p-3">
+        {{-- HEADER --}}
+        <header class="chatbot-header d-flex align-items-center justify-content-between">
 
-             <div class="d-flex align-items-center gap-3">
-                 <div class="chatbot-avatar">
-                     <i class="fa-solid fa-robot fs-4"></i>
-                 </div>
+            <div class="d-flex align-items-center gap-3">
+                <div class="chatbot-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                    <span class="chatbot-avatar-status"></span>
+                </div>
 
-                 <div>
-                     <h6 class="fw-bold text-white mb-1">Asisten KIRA AI</h6>
-                     <small class="text-white-50">
-                         <i class="fa-solid fa-circle text-success me-1" style="font-size: 8px;"></i>
-                         Asisten Keuangan Pribadi
-                     </small>
-                 </div>
-             </div>
+                <div class="chatbot-header-info">
+                    <h6 class="mb-1">KiraAI Assistant</h6>
 
-             <button type="button" wire:click="closeChat" class="btn text-white" aria-label="Tutup chat">
-                 <i class="fa-solid fa-xmark fs-5"></i>
-             </button>
+                    <div class="chatbot-status">
+                        <span class="chatbot-status-dot"></span>
+                        <span>Asisten Keuangan</span>
+                    </div>
+                </div>
+            </div>
 
-         </header>
+            <button
+                type="button"
+                wire:click="closeChat"
+                class="chatbot-close-btn"
+                aria-label="Tutup chat"
+            >
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </header>
 
-         {{-- ISI CHAT --}}
-         <div class="chatbot-messages">
+        {{-- AREA PESAN --}}
+        <div
+            class="chatbot-messages"
+            aria-live="polite"
+            aria-relevant="additions text"
+        >
 
-             {{-- PESAN PEMBUKA --}}
-             <div class="d-flex align-items-start gap-2 mb-3">
-                 <div class="chatbot-bot-avatar">
-                     <i class="fa-solid fa-robot"></i>
-                 </div>
+            {{-- PESAN PEMBUKA --}}
+            @if (empty($message))
+                <div class="chatbot-welcome">
+                    <div class="chatbot-welcome-icon">
+                        <i class="fa-solid fa-hand-sparkles"></i>
+                    </div>
 
-                 <div class="chatbot-bubble chatbot-bot">
-                     <p class="fw-bold mb-1">Halo! 👋</p>
-                     Selamat datang di UANGKU. Saya siap membantu kamu
-                     memahami pemasukan, pengeluaran, dan tabunganmu.
-                     Apa yang ingin kamu tanyakan?
-                 </div>
-             </div>
+                    <h6>Halo, selamat datang! 👋</h6>
 
-             {{-- RIWAYAT PESAN --}}
-             @foreach ($message as $item)
-                 <div wire:key="chat-message-{{ $loop->index }}"
-                     class="d-flex mb-3
-                    {{ $item['role'] === 'user' ? 'justify-content-end' : 'justify-content-start' }}">
+                    <p>
+                        Saya <strong>KiraAI</strong>, asisten keuangan yang siap
+                        membantu kamu memahami pemasukan, pengeluaran, dan kondisi
+                        keuangan berdasarkan data yang tersedia.
+                    </p>
 
-                     @if ($item['role'] === 'assistant')
-                         <div class="chatbot-bot-avatar me-1">
-                             <i class="fa-solid fa-robot"></i>
-                         </div>
-                     @endif
+                    <div class="chatbot-welcome-hint">
+                        <i class="fa-solid fa-lightbulb me-2"></i>
+                        Tanyakan sesuatu tentang keuanganmu.
+                    </div>
+                </div>
+            @endif
 
-                     {{-- <div class="chatbot-bubble
-                        {{ $item['role'] === 'user' ? 'chatbot-user' : 'chatbot-bot' }}">
-                        {{ $item['content'] }}
-                    </div> --}}
-                     @if ($item['role'] === 'assistant')
-                         @php
-                             $converter = new \League\CommonMark\GithubFlavoredMarkdownConverter([
-                                 'html_input' => 'allow',
-                                 'allow_unsafe_links' => false,
-                             ]);
+            {{-- RIWAYAT PESAN --}}
+            @foreach ($message as $item)
+                <div
+                    wire:key="chat-message-{{ $loop->index }}"
+                    class="chatbot-message-row {{ $item['role'] === 'user' ? 'is-user' : 'is-assistant' }}"
+                >
 
-                             // Konversi Markdown dan tabel menjadi HTML.
-                             $renderedHtml = $converter->convert($item['content'])->getContent();
+                    {{-- AVATAR AI --}}
+                    @if ($item['role'] === 'assistant')
+                        <div class="chatbot-bot-avatar">
+                            <i class="fa-solid fa-robot"></i>
+                        </div>
+                    @endif
 
-                             // Bersihkan HTML sebelum dirender di browser.
-                             $safeHtml = \Mews\Purifier\Facades\Purifier::clean($renderedHtml);
-                         @endphp
+                    {{-- PESAN AI --}}
+                    @if ($item['role'] === 'assistant')
+                        @php
+                            $converter = new \League\CommonMark\GithubFlavoredMarkdownConverter([
+                                'html_input' => 'strip',
+                                'allow_unsafe_links' => false,
+                            ]);
 
-                         <div class="chatbot-bubble chatbot-bot chatbot-rich-content">
-                             {!! $safeHtml !!}
-                         </div>
-                     @else
-                         {{-- Pesan pengguna tetap menggunakan escaping Blade --}}
-                         <div class="chatbot-bubble chatbot-user">
-                             {{ $item['content'] }}
-                         </div>
-                     @endif
+                            $renderedHtml = $converter
+                                ->convert($item['content'])
+                                ->getContent();
 
-                 </div>
-             @endforeach
+                            $safeHtml = \Mews\Purifier\Facades\Purifier::clean($renderedHtml);
+                        @endphp
 
-         </div>
+                        <div class="chatbot-bubble chatbot-bot chatbot-rich-content">
+                            {!! $safeHtml !!}
+                        </div>
 
-         {{-- INPUT PESAN --}}
-         <footer class="chatbot-footer p-3">
+                    {{-- PESAN PENGGUNA --}}
+                    @else
+                        <div class="chatbot-bubble chatbot-user">
+                            {{ $item['content'] }}
+                        </div>
+                    @endif
 
-             <form wire:submit="sendMessage">
-                 <div class="d-flex align-items-center gap-2">
+                </div>
+            @endforeach
 
-                     <input type="text" wire:model="inputMessage" class="form-control chatbot-input"
-                         placeholder="Tulis pesan di sini..." maxlength="1000" autocomplete="off"
-                         aria-label="Tulis pesan">
+            {{-- INDIKATOR SAAT AI MEMPROSES JAWABAN --}}
+            <div
+                wire:loading
+                wire:target="sendMessage"
+                class="chatbot-message-row is-assistant chatbot-loading-row"
+            >
+                <div class="chatbot-bot-avatar">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
 
-                     <button type="submit" class="chatbot-send" aria-label="Kirim pesan">
+                <div class="chatbot-bubble chatbot-bot chatbot-typing">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
 
-                         <i class="fa-solid fa-paper-plane"></i>
+        </div>
 
-                     </button>
-                 </div>
+        {{-- AREA INPUT --}}
+        <footer class="chatbot-footer">
 
-                 @error('inputMessage')
-                     <small class="text-danger d-block mt-1">
-                         {{ $message }}
-                     </small>
-                 @enderror
-             </form>
+            <form wire:submit="sendMessage" class="chatbot-form">
+                <div class="chatbot-input-wrapper">
 
-             <p class="text-center text-muted mb-0 mt-2" style="font-size: 11px;">
-                 <i class="fa-solid fa-sparkles me-1"></i>
-                 Asisten Keuangan KiraAI
-             </p>
+                    <input
+                        type="text"
+                        wire:model="inputMessage"
+                        class="chatbot-input"
+                        placeholder="Tanyakan sesuatu..."
+                        maxlength="1000"
+                        autocomplete="off"
+                        aria-label="Tulis pesan untuk KiraAI"
+                        required
+                    >
 
-         </footer>
-     </section>
+                    <button
+                        type="submit"
+                        class="chatbot-send"
+                        aria-label="Kirim pesan"
+                        wire:loading.attr="disabled"
+                        wire:target="sendMessage"
+                    >
+                        <i
+                            class="fa-solid fa-paper-plane"
+                            wire:loading.remove
+                            wire:target="sendMessage"
+                        ></i>
 
- </div>
+                        <span
+                            class="spinner-border spinner-border-sm"
+                            wire:loading
+                            wire:target="sendMessage"
+                            aria-hidden="true"
+                        ></span>
+                    </button>
+
+                </div>
+
+                @error('inputMessage')
+                    <small class="chatbot-error">
+                        <i class="fa-solid fa-circle-exclamation me-1"></i>
+                        {{ $message }}
+                    </small>
+                @enderror
+            </form>
+
+            <p class="chatbot-footer-note">
+                <i class="fa-solid fa-shield-halved me-1"></i>
+                Asisten keuangan KiraAI
+            </p>
+
+        </footer>
+
+    </section>
+
+</div>
